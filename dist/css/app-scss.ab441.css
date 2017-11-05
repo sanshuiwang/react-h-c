@@ -1,0 +1,11 @@
+.main {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  background: green;
+  width: 200px; }
+  .main .content {
+    color: red; }
+  .main img {
+    width: 100px; }
+
+/*# sourceMappingURL=app-scss.ab441.css.map*/
