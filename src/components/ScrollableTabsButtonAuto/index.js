@@ -18,7 +18,7 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
-  },
+  }
 });
 
 class ScrollableTabsButtonAuto extends React.Component {
@@ -31,7 +31,8 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
+    console.log(1000,this.props);
+    const { classes,tabsItems,itemNodes } = this.props;
     const { value } = this.state;
 
     return (
@@ -45,22 +46,14 @@ class ScrollableTabsButtonAuto extends React.Component {
             scrollable
             scrollButtons="auto"
           >
-            <Tab label="Item One" />
-            <Tab label="Item Two" />
-            <Tab label="Item Three" />
-            <Tab label="Item Four" />
-            <Tab label="Item Five" />
-            <Tab label="Item Six" />
-            <Tab label="Item Seven" />
+            {tabsItems.map((tabsItem,index) => (
+              <Tab key={index} label={tabsItem} />
+            ))}
           </Tabs>
         </AppBar>
-        {value === 0 && <TabContainer>Item One</TabContainer>}
-        {value === 1 && <TabContainer>Item Two</TabContainer>}
-        {value === 2 && <TabContainer>Item Three</TabContainer>}
-        {value === 3 && <TabContainer>Item Four</TabContainer>}
-        {value === 4 && <TabContainer>Item Five</TabContainer>}
-        {value === 5 && <TabContainer>Item Six</TabContainer>}
-        {value === 6 && <TabContainer>Item Seven</TabContainer>}
+        {itemNodes.map((itemNode,index) => (
+          value === index && <TabContainer key={index}>{itemNode}</TabContainer>
+        ))}
       </div>
     );
   }
@@ -68,6 +61,8 @@ class ScrollableTabsButtonAuto extends React.Component {
 
 ScrollableTabsButtonAuto.propTypes = {
   classes: PropTypes.object.isRequired,
+  tabsItems: PropTypes.array.isRequired,
+  itemNodes: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(ScrollableTabsButtonAuto);
