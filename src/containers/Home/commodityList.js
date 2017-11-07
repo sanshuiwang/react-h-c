@@ -22,17 +22,19 @@ function CommodityList(props) {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Dessert (100g serving)</TableCell>
-            <TableCell numeric>Calories</TableCell>
-            <TableCell numeric>Fat (g)</TableCell>
-            <TableCell numeric>Carbs (g)</TableCell>
-            <TableCell numeric>Protein (g)</TableCell>
+            <TableCell>ID</TableCell>
+            <TableCell>商品名称</TableCell>
+            <TableCell numeric>商品库存</TableCell>
+            <TableCell numeric>商品库房/#</TableCell>
+            <TableCell numeric>商品价格/￥</TableCell>
+            <TableCell numeric>供应商</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {commodityList.map(n => {
             return (
               <TableRow key={n.id}>
+                <TableCell>{n.id}</TableCell>
                 <TableCell>{n.name}</TableCell>
                 <TableCell numeric>{n.calories}</TableCell>
                 <TableCell numeric>{n.fat}</TableCell>
