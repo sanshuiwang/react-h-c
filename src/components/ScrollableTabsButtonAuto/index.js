@@ -5,7 +5,7 @@ import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
 function TabContainer(props) {
-  return <div style={{ padding: 8 * 3 }}>{props.children}</div>;
+  return <div style={{ paddingTop: 8 * 1  }}>{props.children}</div>;
 }
 
 TabContainer.propTypes = {
@@ -31,7 +31,6 @@ class ScrollableTabsButtonAuto extends React.Component {
   };
 
   render() {
-    console.log(1000,this.props);
     const { classes,tabsItems,itemNodes } = this.props;
     const { value } = this.state;
 

@@ -3,33 +3,20 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
+
 const styles = theme => ({
   root: {
     width: '100%',
     marginTop: theme.spacing.unit * 0,
-    overflowX: 'auto',
+    overflowX: 'auto'
   },
   table: {
-    padding: 0,
-    minWidth: 700,
+    minWidth: 700
   },
 });
-let id = 0;
-function createData(name, calories, fat, carbs, protein) {
-  id += 1;
-  return { id, name, calories, fat, carbs, protein };
-}
-const data = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
 
 function CommodityList(props) {
-  const { classes } = props;
-
+  const { classes,commodityList } = props;
   return (
     <Paper className={classes.root}>
       <Table className={classes.table}>
@@ -43,7 +30,7 @@ function CommodityList(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map(n => {
+          {commodityList.map(n => {
             return (
               <TableRow key={n.id}>
                 <TableCell>{n.name}</TableCell>

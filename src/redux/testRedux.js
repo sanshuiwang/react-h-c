@@ -1,4 +1,4 @@
-import {increment,decrement,reset} from './actions/counter';
+import {getCommodityList} from '../containers/Home/action';
 
 import store from './store';
 
@@ -10,9 +10,7 @@ console.log(store.getState());
 let unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 //发起一系列action
-store.dispatch(increment());
-store.dispatch(decrement());
-store.dispatch(reset());
+store.dispatch(getCommodityList());
 
 //停止监听state更新
 unsubscribe();

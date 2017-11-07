@@ -2,17 +2,17 @@ export const GET_USER_INFO_REQUEST = "userInfo/GET_USER_INFO_REQUEST";
 export const GET_USER_INFO_SUCCESS = "userInfo/GET_USER_INFO_SUCCESS";
 export const GET_USER_INFO_FAIL = "userInfo/GET_USER_INFO_FAIL";
 
-function getUserInfoRequest() {
-  return {type: GET_USER_INFO_REQUEST}
-}
-
-function getUserInfoSuccess(userInfo){
-  return {type: GET_USER_INFO_SUCCESS, userInfo: userInfo}
-}
-
-function getUserInfoFail() {
-  return{type: GET_USER_INFO_FAIL}
-}
+// function getUserInfoRequest() {
+//   return {type: GET_USER_INFO_REQUEST}
+// }
+//
+// function getUserInfoSuccess(userInfo){
+//   return {type: GET_USER_INFO_SUCCESS, userInfo: userInfo}
+// }
+//
+// function getUserInfoFail() {
+//   return{type: GET_USER_INFO_FAIL}
+// }
 
 /*我们现在的这个action创建函数 getUserInfo则是返回函数了。
 *为了让action创建函数除了返回action对象外，还可以返回函数，我们需要引用redux-thunk中间件。*/
