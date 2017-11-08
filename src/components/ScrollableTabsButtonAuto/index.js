@@ -4,6 +4,8 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
+import {themBg,tabsTextColor} from '../../materialColor';
+
 function TabContainer(props) {
   return <div style={{ paddingTop: 8 * 1  }}>{props.children}</div>;
 }
@@ -18,6 +20,9 @@ const styles = theme => ({
     width: '100%',
     marginTop: theme.spacing.unit * 3,
     backgroundColor: theme.palette.background.paper,
+  },
+  barStyle: {
+    backgroundColor: themBg,
   }
 });
 
@@ -36,12 +41,13 @@ class ScrollableTabsButtonAuto extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" color="default">
+        <AppBar position="static" className={classes.barStyle}>
           <Tabs
             value={value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            indicatorClassName={classes.tabActive}
+            indicatorColor={tabsTextColor}
+            textColor={tabsTextColor}
             scrollable
             scrollButtons="auto"
           >
