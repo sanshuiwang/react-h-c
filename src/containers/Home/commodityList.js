@@ -1,12 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import {themBg} from '../../materialColor';
+
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
 import Paper from 'material-ui/Paper';
 import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
-import DeleteIcon from 'material-ui-icons/Delete';
 import Tooltip from 'material-ui/Tooltip';
+
+import DeleteIcon from 'material-ui-icons/Delete';
+import ModeEdit from 'material-ui-icons/ModeEdit';
 const styles = theme => ({
   root: {
     width: '100%',
@@ -16,10 +21,13 @@ const styles = theme => ({
   table: {
     minWidth: 700
   },
-  deleteIcon: {
+  icon: {
     width: 18,
     height: 18,
     cursor: "pointer",
+  },
+  button: {
+    width: 28
   }
 });
 
@@ -35,7 +43,7 @@ function CommodityList(props) {
             <TableCell numeric>商品库存</TableCell>
             <TableCell numeric>商品库房/#</TableCell>
             <TableCell numeric>商品价格/￥</TableCell>
-            <TableCell numeric>供应商</TableCell>
+            <TableCell>供应商</TableCell>
             <TableCell>操作</TableCell>
           </TableRow>
         </TableHead>
@@ -48,11 +56,16 @@ function CommodityList(props) {
                 <TableCell numeric>{n.calories}</TableCell>
                 <TableCell numeric>{n.fat}</TableCell>
                 <TableCell numeric>{n.carbs}</TableCell>
-                <TableCell numeric>{n.protein}</TableCell>
+                <TableCell>{n.protein}</TableCell>
                 <TableCell>
-                  <Tooltip id="tooltip-icon" title="Delete" placement="bottom">
+                  <Tooltip id="tooltip-icon" title="编辑" placement="left-start">
+                    <IconButton aria-label="Edit" className={classes.button}>
+                      <ModeEdit className={classes.icon} style={{ color: themBg }}/>
+                    </IconButton>
+                  </Tooltip>
+                  <Tooltip id="tooltip-icon" title="删除" placement="right-start">
                     <IconButton aria-label="Delete">
-                      <DeleteIcon className={classes.deleteIcon} />
+                      <DeleteIcon className={classes.icon} style={{ color: "red" }}/>
                     </IconButton>
                   </Tooltip>
                 </TableCell>
