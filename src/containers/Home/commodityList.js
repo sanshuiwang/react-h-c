@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {themBg} from '../../materialColor';
+import {themBg,delectIcon} from '../../materialColor';
 
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
@@ -65,7 +65,7 @@ function CommodityList(props) {
                   </Tooltip>
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
                     <IconButton aria-label="Delete">
-                      <DeleteIcon className={classes.icon} style={{ color: "red" }}/>
+                      <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
                   </Tooltip>
                 </TableCell>
