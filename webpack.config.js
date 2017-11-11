@@ -23,8 +23,10 @@ devtool的值改成cheap-module-source-map
 2.process.env.NODE_ENV 环境变量关联
 3.HashedModuleIdsPlugin使公共部分文件名不变{即使更改了别的代码文件,那么vendor.xxx.js不变},更改vender数组内容才会变{控制成不改内容不换chunkhash}
 4.CleanWebpackPlugin打包优化，清理干净生产的目录
-5.css生成单独文件extract-text-webpack-plugin
-6.babel-plugin-transform-runtime将辅助函数“搬”到一个单独的模块babel-runtime中，这样做能减小项目文件的大小。{原因：babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。}*/
+5.提取css,并将css生成单独文件extract-text-webpack-plugin
+6.babel-plugin-transform-runtime将辅助函数“搬”到一个单独的模块babel-runtime中，这样做能减小项目文件的大小。
+{原因：babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。}
+*/
 const publicConfig = {
   /*错误信息是不是提示的很详细,我们在srouce里面能看到我们写的代码，也能打断点调试哦~*/
   devtool: 'cheap-module-source-map',
