@@ -10,7 +10,7 @@ console.log(store.getState());
 let unsubscribe = store.subscribe(() => console.log(store.getState()));
 
 //发起一系列action
-store.dispatch(getCommodityList());
+store.dispatch(delectCommodityList(2));
 
 //停止监听state更新
 unsubscribe();

@@ -1,7 +1,10 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {themBg,delectIcon} from '../../materialColor';
+import {delectCommodityById} from './action';
+
+import {themBg,delectIcon} from '../../util/materialColor';
 
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
@@ -82,4 +85,4 @@ CommodityList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CommodityList);
+export default withStyles(styles)(connect(() => ({}),{delectCommodityById})(CommodityList));

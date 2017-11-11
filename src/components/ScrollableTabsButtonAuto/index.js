@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
-import {themBg,tabsTextColor} from '../../materialColor';
+import {themBg,tabsTextColor} from '../../util/materialColor';
 
 function TabContainer(props) {
   return <div style={{ paddingTop: 8 * 1  }}>{props.children}</div>;
