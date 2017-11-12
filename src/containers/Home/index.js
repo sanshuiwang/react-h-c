@@ -13,13 +13,13 @@ class Home extends Component {
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.props.getCommodityList();
   }
 
   render(){
     const commodityTabs = ['列表','添加','搜索'];
-    const commodityNodes = [<CommodityList commodityList={this.props.commodityList} />,'添加!!!','sousuo !!!']
+    const commodityNodes = [<CommodityList commodityList={this.props.commodityList.commodityListArr} />,'添加!!!','sousuo !!!']
     return (
       <div>
         <ScrollableTabsButtonAuto tabsItems={commodityTabs} itemNodes={commodityNodes}/>
@@ -28,4 +28,4 @@ class Home extends Component {
   }
 }
 
-export default connect((state) => ({commodityList: state.commodityList.commodityListArr}),{getCommodityList})(Home);
+export default connect((state) => ({commodityList: state.commodityList}),{getCommodityList})(Home);

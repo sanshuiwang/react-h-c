@@ -19,7 +19,7 @@ export default function reducer(state=initState,action){
         ...state
       };
     case GET_COMMODITY_INFO_SUCCESS:
-    console.log(1000,action.result);
+      console.log(1000,action.result);
       return {
         ...state,
         commodityListArr: action.result.data
@@ -33,12 +33,25 @@ export default function reducer(state=initState,action){
         ...state
       };
     case DELECT_COMMODITY_INFO_SUCCESS:
-      console.log(3000,action.result.id);
-      console.log(4000,state);
+      console.log(3000,action);
+      console.log(30001,action.result);
+      let commodityListDeleted = state.commodityListArr.slice(0);
+      console.log(30002,commodityListDeleted);
+      commodityListDeleted.forEach(function(ele,index){
+        if (ele.id === action.id) {
+          commodityListDeleted.splice(index,1);
+        }
+      });
+      console.log(30003, commodityListDeleted);
       return {
         ...state,
-        commodityListArr: state.commodityListArr.remove(action.result.id)
+        commodityListArr: commodityListDeleted
       };
+      // state.commodityListArr.splice(action.result.id - 1,1);
+      // return {
+      //   ...state,
+      //   commodityListArr: state.commodityListArr
+      // };
     case DELECT_COMMODITY_INFO_FAIL:
       return {
         ...state

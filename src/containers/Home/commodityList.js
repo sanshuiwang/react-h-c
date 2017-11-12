@@ -67,7 +67,7 @@ function CommodityList(props) {
                     </IconButton>
                   </Tooltip>
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
-                    <IconButton aria-label="Delete">
+                    <IconButton aria-label="Delete" onClick={() => props.delectCommodityById(n.id)}>
                       <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
                   </Tooltip>
