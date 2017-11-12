@@ -35,6 +35,7 @@ export default function reducer(state=initState,action){
     case DELECT_COMMODITY_INFO_SUCCESS:
       console.log(3000,action);
       console.log(30001,action.result);
+      console.log(3000000,state.commodityListArr);
       let commodityListDeleted = state.commodityListArr.slice(0);
       console.log(30002,commodityListDeleted);
       commodityListDeleted.forEach(function(ele,index){
