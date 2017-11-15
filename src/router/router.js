@@ -11,7 +11,7 @@ import UserInfo from 'bundle-loader?lazy&name=userInfo222!../containers/UserInfo
 import NotFound from 'bundle-loader?lazy&name=notFound!../containers/NotFound';
 
 import Loading from '../components/Loading';
-
+import AlertDialog from '../components/AlertDialog';
 
 const createComponent = (component) => () => (
   <Bundle load={component}>
@@ -27,7 +27,7 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>
         <Route path="/userInfo" component={createComponent(UserInfo)}/>
-        <Route path="/loading" component={Loading}/>
+        <Route path="/alertDialog" component={AlertDialog}/>
         <Route component={createComponent(NotFound)}/>
       </Switch>
 );

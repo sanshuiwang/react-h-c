@@ -51,7 +51,8 @@ function CommodityList(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {commodityList.map(n => {
+          {
+            commodityList.length !== 0 ? commodityList.map(n => {
             return (
               <TableRow key={n.id}>
                 <TableCell>{n.id}</TableCell>
@@ -74,7 +75,8 @@ function CommodityList(props) {
                 </TableCell>
               </TableRow>
             );
-          })}
+          }) : <TableRow><TableCell>暂无数据</TableCell></TableRow>
+        }
         </TableBody>
       </Table>
     </Paper>
