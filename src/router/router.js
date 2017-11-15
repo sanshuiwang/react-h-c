@@ -27,6 +27,7 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>
         <Route path="/userInfo" component={createComponent(UserInfo)}/>
+        <Route path="/load" component={Loading}/>
         <Route component={createComponent(NotFound)}/>
       </Switch>
 );
