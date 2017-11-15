@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import {delectCommodityById} from './action';
 
-import {themBg,delectIcon} from '../../util/materialColor';
+import {THEMBG,delectIcon} from '../../util/materialColor';
 
 import { withStyles } from 'material-ui/styles';
 import Table, { TableBody, TableCell, TableHead, TableRow } from 'material-ui/Table';
@@ -63,7 +63,7 @@ function CommodityList(props) {
                 <TableCell>
                   <Tooltip id="tooltip-icon" title="编辑" placement="left-start">
                     <IconButton aria-label="Edit" className={classes.button}>
-                      <ModeEdit className={classes.icon} style={{ color: themBg }}/>
+                      <ModeEdit className={classes.icon} style={{ color: THEMBG }}/>
                     </IconButton>
                   </Tooltip>
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">

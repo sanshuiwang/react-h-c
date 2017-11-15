@@ -4,17 +4,18 @@ import cs from 'classnames';
 
 import { withStyles } from 'material-ui/styles';
 import { LinearProgress } from 'material-ui/Progress';
-import {themBg,THEMBGMAT} from '../../util/materialColor';
+import {THEMBG,THEMBGMAT} from '../../util/materialColor';
 
 const styles = {
   root: {
-    width: '100%'
+    width: '100%',
+    zIndex: '999'
   },
   primaryColor: {
     backgroundColor: THEMBGMAT
   },
   primaryColorBar: {
-    backgroundColor: themBg
+    backgroundColor: THEMBG
   }
 };
 
