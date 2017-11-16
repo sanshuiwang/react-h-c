@@ -6,17 +6,22 @@ import Dialog, {
   DialogContentText,
   DialogTitle,
 } from 'material-ui/Dialog';
+import Slide from 'material-ui/transitions/Slide';
+
+function Transition(props) {
+  return <Slide direction="up" timeout={{enter:100, exit:100}} {...props} />;
+}
+
 class AlertDialog extends React.Component {
 
   render() {
-    console.log(10001111,this.props);
-    const {open,handleRequestClose} = this.props;
+    const {alertDialogData,handleRequestClose} = this.props;
     return (
       <div>
-        <Dialog open={open} onRequestClose={handleRequestClose}>
-          <DialogTitle>{'title'}</DialogTitle>
+        <Dialog open={alertDialogData.open} onRequestClose={handleRequestClose} transition={Transition}>
+          <DialogTitle>{alertDialogData.title}</DialogTitle>
           <DialogContent>
-            <DialogContentText>{'content'}</DialogContentText>
+            <DialogContentText>{alertDialogData.content}</DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleRequestClose} color="primary">取消</Button>

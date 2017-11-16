@@ -5,42 +5,38 @@ import ScrollableTabsButtonAuto from '../../components/ScrollableTabsButtonAuto'
 import AlertDialog from '../../components/AlertDialog';
 
 import CommodityList from './commodityList';
-import {getCommodityList} from './action';
+import {getCommodityList,delectCommodityAlertDialog} from './action';
 
 class Home extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      open: true
-    }
   }
 
   componentDidMount() {
     this.props.getCommodityList();
   }
 
-  // handleClickOpen = () => {
-  //   this.setState({ open: true });
-  // };
-
   handleRequestClose = () => {
-    this.setState({ open: false });
+    this.props.delectCommodityAlertDialog({id: null,open: false,title: '',content: ''});
   };
 
   render(){
+    const {commodityListData,alertDialogData} = this.props;
     const commodityTabs = ['列表','添加','搜索'];
-    const commodityNodes = [<CommodityList commodityList={this.props.commodityList.commodityListArr} />,'添加!!!','sousuo !!!']
+    const commodityNodes = [<CommodityList commodityList={commodityListData} />,'添加!!!','sousuo !!!'];
     return (
       <div>
         <ScrollableTabsButtonAuto tabsItems={commodityTabs} itemNodes={commodityNodes}/>
-        <AlertDialog open={this.state.open} handleRequestClose={this.handleRequestClose}/>
+        <AlertDialog alertDialogData={alertDialogData} handleRequestClose={this.handleRequestClose}/>
       </div>
     );
   }
 }
 
 export default connect((state) => ({
-  commodityList: state.commodityList
+  commodityListData: state.commodity.commodityListArr,
+  alertDialogData: state.commodity.alertDialog
 }),{
-  getCommodityList
+  getCommodityList,
+  delectCommodityAlertDialog
 })(Home);

@@ -1,7 +1,7 @@
 import {combineReducers} from "redux";
 import counter from '../containers/Counter/reducer';
 import userInfo from '../containers/UserInfo/reducer';
-import commodityList from '../containers/Home/reducer';
+import commodity from '../containers/Home/reducer';
 
 /*调用store.dispatch(action)提交action。
 *redux store调用传入的reducer函数。把当前的state和action传进去。
@@ -17,5 +17,5 @@ import commodityList from '../containers/Home/reducer';
 export default combineReducers({
   counter,
   userInfo,
-  commodityList
+  commodity
 });
