@@ -21,10 +21,19 @@ export function delectCommodityById(id){
   return {
     types: [DELECT_COMMODITY_INFO_REQUEST,DELECT_COMMODITY_INFO_SUCCESS,DELECT_COMMODITY_INFO_FAIL],
     promise: client => client.delete(`${PATH}/commodityList/${id}`),
-    id: id
+    id: id,
+    afterSuccess:(dispatch,getState,response)=>{
+      /*请求成功后执行的函数,关闭弹层*/
+      let stateData = getState();
+      let stateCommodity = JSON.parse(JSON.stringify(stateData.commodity.alertDialog));
+      stateCommodity.open = false;
+      dispatch(delectCommodityAlertDialog(stateCommodity));
+    }
   }
 }
 
 export function delectCommodityAlertDialog(alertDialogData) {
+  console.log('进来！！！');
+  console.log(4444,alertDialogData);
   return {type: DELECT_COMMODITY_ALERT_DIALOG, alertDialogData: alertDialogData}
 }

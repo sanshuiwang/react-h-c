@@ -15,7 +15,7 @@ function Transition(props) {
 class AlertDialog extends React.Component {
 
   render() {
-    const {alertDialogData,handleRequestClose} = this.props;
+    const {alertDialogData,handleRequestClose,handleRequestDelect} = this.props;
     return (
       <div>
         <Dialog open={alertDialogData.open} onRequestClose={handleRequestClose} transition={Transition}>
@@ -25,7 +25,7 @@ class AlertDialog extends React.Component {
           </DialogContent>
           <DialogActions>
             <Button onClick={handleRequestClose} color="primary">取消</Button>
-            <Button onClick={handleRequestClose} color="primary" autoFocus>确认</Button>
+            <Button onClick={handleRequestDelect} color="primary" autoFocus>确认</Button>
           </DialogActions>
         </Dialog>
       </div>

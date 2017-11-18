@@ -5,7 +5,7 @@ import ScrollableTabsButtonAuto from '../../components/ScrollableTabsButtonAuto'
 import AlertDialog from '../../components/AlertDialog';
 
 import CommodityList from './commodityList';
-import {getCommodityList,delectCommodityAlertDialog} from './action';
+import {getCommodityList,delectCommodityAlertDialog,delectCommodityById} from './action';
 
 class Home extends Component {
   constructor(props){
@@ -17,9 +17,14 @@ class Home extends Component {
   }
 
   handleRequestClose = () => {
-    this.props.delectCommodityAlertDialog({id: null,open: false,title: '',content: ''});
+    let alertDialogDataCopy = JSON.parse(JSON.stringify(this.props.alertDialogData));
+    alertDialogDataCopy.open = false;
+    this.props.delectCommodityAlertDialog(alertDialogDataCopy);
   };
-
+  handleRequestDelect = () => {
+    let id = this.props.alertDialogData.id;
+    this.props.delectCommodityById(id);
+  }
   render(){
     const {commodityListData,alertDialogData} = this.props;
     const commodityTabs = ['列表','添加','搜索'];
@@ -27,7 +32,11 @@ class Home extends Component {
     return (
       <div>
         <ScrollableTabsButtonAuto tabsItems={commodityTabs} itemNodes={commodityNodes}/>
-        <AlertDialog alertDialogData={alertDialogData} handleRequestClose={this.handleRequestClose}/>
+        <AlertDialog
+          alertDialogData={alertDialogData}
+          handleRequestClose={this.handleRequestClose}
+          handleRequestDelect={this.handleRequestDelect}
+        />
       </div>
     );
   }
@@ -38,5 +47,6 @@ export default connect((state) => ({
   alertDialogData: state.commodity.alertDialog
 }),{
   getCommodityList,
+  delectCommodityById,
   delectCommodityAlertDialog
 })(Home);
