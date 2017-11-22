@@ -43,7 +43,7 @@ function CommodityList(props) {
           <TableRow>
             <TableCell>ID</TableCell>
             <TableCell>商品名称</TableCell>
-            <TableCell numeric>商品库存</TableCell>
+            <TableCell numeric>商品库存/件</TableCell>
             <TableCell numeric>商品库房/#</TableCell>
             <TableCell numeric>商品价格/￥</TableCell>
             <TableCell>供应商</TableCell>

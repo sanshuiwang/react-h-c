@@ -10,6 +10,12 @@ export const DELECT_COMMODITY_INFO_FAIL = "home/DELECT_COMMODITY_INFO_FAIL";
 
 export const DELECT_COMMODITY_ALERT_DIALOG = "home/DELECT_COMMODITY_ALERT_DIALOG";
 
+export const ADD_COMMODITY_FORM = "home/ADD_COMMODITY_FORM";
+
+export const ADD_COMMODITY_TO_DB_REQUEST = "home/ADD_COMMODITY_TO_DB_REQUEST";
+export const ADD_COMMODITY_TO_DB_SUCCESS = "home/ADD_COMMODITY_TO_DB_SUCCESS";
+export const ADD_COMMODITY_TO_DB_FAIL = "home/ADD_COMMODITY_TO_DB_FAIL";
+
 export function getCommodityList(){
   return {
     types: [GET_COMMODITY_INFO_REQUEST,GET_COMMODITY_INFO_SUCCESS,GET_COMMODITY_INFO_FAIL],
@@ -33,7 +39,16 @@ export function delectCommodityById(id){
 }
 
 export function delectCommodityAlertDialog(alertDialogData) {
-  console.log('进来！！！');
-  console.log(4444,alertDialogData);
   return {type: DELECT_COMMODITY_ALERT_DIALOG, alertDialogData: alertDialogData}
+}
+
+export function addCommodityFormChange(addCommodityFormData){
+  return {type: ADD_COMMODITY_FORM, addCommodityFormData: addCommodityFormData}
+}
+
+export function addCommodityToDB(addCommodityFormData){
+  return {
+    types: [ADD_COMMODITY_TO_DB_REQUEST,ADD_COMMODITY_TO_DB_SUCCESS,ADD_COMMODITY_TO_DB_FAIL],
+    promise: client => client.post(`${PATH}/commodityList`,addCommodityFormData)
+  }
 }

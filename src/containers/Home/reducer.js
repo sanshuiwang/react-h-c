@@ -5,19 +5,29 @@ import {
   DELECT_COMMODITY_INFO_REQUEST,
   DELECT_COMMODITY_INFO_SUCCESS,
   DELECT_COMMODITY_INFO_FAIL,
-  DELECT_COMMODITY_ALERT_DIALOG
+  DELECT_COMMODITY_ALERT_DIALOG,
+  ADD_COMMODITY_FORM
 } from './action';
 
 const initAlertDialog = {
-  id: null,
+  id: '',
   open: false,
   title: '',
   content: ''
 }
+const initAddCommodityForm = {
+  id: '',
+  name: '',
+  num: '',
+  house: '',
+  price: '',
+  supplier: ''
+}
 
 const initState = {
   commodityListArr: [],
-  alertDialog: initAlertDialog
+  alertDialog: initAlertDialog,
+  addCommodityForm: initAddCommodityForm
 };
 
 /*这里的...state语法，是和别人的Object.assign()起同一个作用，合并新旧state。我们这里是没效果的，但是我建议都写上这个哦*/
@@ -56,10 +66,27 @@ export default function reducer(state=initState,action){
         ...state
       };
     case DELECT_COMMODITY_ALERT_DIALOG:
-      console.log(1000,action);
       return {
         ...state,
         alertDialog: action.alertDialogData
+      };
+    case ADD_COMMODITY_FORM:
+      return {
+        ...state,
+        addCommodityForm: action.addCommodityFormData
+      };
+    case DELECT_COMMODITY_INFO_REQUEST:
+      return {
+        ...state
+      };
+    case DELECT_COMMODITY_INFO_SUCCESS:
+      return {
+        ...state,
+        addCommodityForm: initAddCommodityForm
+      };
+    case DELECT_COMMODITY_INFO_FAIL:
+      return {
+        ...state
       };
     default:
       return state;

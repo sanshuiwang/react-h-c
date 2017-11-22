@@ -11,7 +11,6 @@ import UserInfo from 'bundle-loader?lazy&name=userInfo222!../containers/UserInfo
 import NotFound from 'bundle-loader?lazy&name=notFound!../containers/NotFound';
 
 import Loading from '../components/Loading';
-import CommodityAdd from '../containers/Home/commodityAdd';
 
 const createComponent = (component) => () => (
   <Bundle load={component}>
@@ -27,7 +26,6 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>
         <Route path="/userInfo" component={createComponent(UserInfo)}/>
-        <Route path="/commodityAdd" component={CommodityAdd}/>
         <Route component={createComponent(NotFound)}/>
       </Switch>
 );

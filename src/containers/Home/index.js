@@ -5,6 +5,8 @@ import ScrollableTabsButtonAuto from '../../components/ScrollableTabsButtonAuto'
 import AlertDialog from '../../components/AlertDialog';
 
 import CommodityList from './commodityList';
+import CommodityAdd from './CommodityAdd';
+
 import {getCommodityList,delectCommodityAlertDialog,delectCommodityById} from './action';
 
 class Home extends Component {
@@ -28,7 +30,7 @@ class Home extends Component {
   render(){
     const {commodityListData,alertDialogData} = this.props;
     const commodityTabs = ['列表','添加','搜索'];
-    const commodityNodes = [<CommodityList commodityList={commodityListData} />,'添加!!!','sousuo !!!'];
+    const commodityNodes = [<CommodityList commodityList={commodityListData} />,<CommodityAdd />,'sousuo !!!'];
     return (
       <div>
         <ScrollableTabsButtonAuto tabsItems={commodityTabs} itemNodes={commodityNodes}/>

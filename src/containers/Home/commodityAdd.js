@@ -1,52 +1,98 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Input, { InputLabel } from 'material-ui/Input';
+import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
+import Button from 'material-ui/Button';
+import {addCommodityFormChange,addCommodityToDB} from './action';
+import {THEMBG} from '../../util/materialColor';
 
 const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
   formControl: {
-    margin: theme.spacing.unit,
+    display: 'block',
+    margin: theme.spacing.unit
   },
+  rootInputLabel: {
+    color: THEMBG
+  },
+  underlineInput: {
+    backgroundColor: 'red'
+  },
+  button: {
+    margin: theme.spacing.unit,
+  }
 });
 
 class CommodityAdd extends React.Component {
-  state = {
-    name: 'Composed TextField',
+  handleChange = (item,event) => {
+    console.log(200000,item);
+    let addCommodityFormDataCopy = JSON.parse(JSON.stringify(this.props.addCommodityFormData));
+    if(addCommodityFormDataCopy.hasOwnProperty(item)){
+      addCommodityFormDataCopy[item] = event.target.value;
+    }
+
+    this.props.addCommodityFormChange(addCommodityFormDataCopy);
   };
 
-  handleChange = event => {
-    this.setState({ name: event.target.value });
-  };
+  handleSubmit(){
+    let addCommodityFormDataSubmit = JSON.parse(JSON.stringify(this.props.addCommodityFormData));
+    if(addCommodityFormDataSubmit.hasOwnProperty('id') && addCommodityFormDataSubmit['id'].length == 0){
+      addCommodityFormDataSubmit['id'] = (new Date()).getTime();
+    }
+    this.props.addCommodityFormChange(addCommodityFormDataSubmit);
+    // this.props.addCommodityToDB(this.props.addCommodityFormData);
+    //promise研究中
+  }
 
   render() {
     const { classes } = this.props;
 
     return (
-      <div className={classes.container}>
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="name-simple">Name</InputLabel>
-          <Input id="name-simple" value={this.state.name} onChange={this.handleChange} />
-        </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="name-helper">Name</InputLabel>
-          <Input id="name-helper" value={this.state.name} onChange={this.handleChange} />
-          <FormHelperText>Some important helper text</FormHelperText>
-        </FormControl>
-        <FormControl className={classes.formControl} disabled>
-          <InputLabel htmlFor="name-disabled">Name</InputLabel>
-          <Input id="name-disabled" value={this.state.name} onChange={this.handleChange} />
-          <FormHelperText>Disabled</FormHelperText>
-        </FormControl>
-        <FormControl className={classes.formControl} error>
-          <InputLabel htmlFor="name-error">Name</InputLabel>
-          <Input id="name-error" value={this.state.name} onChange={this.handleChange} />
-          <FormHelperText>Error</FormHelperText>
-        </FormControl>
+      <div>
+          <FormControl className={classes.formControl}>
+            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="name-goods">商品名称</InputLabel>
+            <Input
+              id="name-goods"
+              type="text"
+              onChange={(e) => this.handleChange('name',e)}
+            />
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="num-goods">商品库存</InputLabel>
+            <Input
+              id="num-goods"
+              type='tel'
+              endAdornment={<InputAdornment position="end">件</InputAdornment>}
+              onChange={(e) => this.handleChange('num',e)}/>
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="house-goods">商品库房</InputLabel>
+            <Input
+              id="house-goods"
+              type='tel'
+              endAdornment={<InputAdornment position="end">#</InputAdornment>}
+              onChange={(e) => this.handleChange('house',e)}
+            />
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="price-goods">商品价格</InputLabel>
+            <Input
+              id="price-goods"
+              type='tel'
+              endAdornment={<InputAdornment position="end">￥</InputAdornment>}
+              onChange={(e) => this.handleChange('price',e)}
+            />
+          </FormControl>
+          <FormControl className={classes.formControl}>
+            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="supplier-goods">供应商</InputLabel>
+            <Input
+              id="supplier-goods"
+              type="text"
+              onChange={(e) => this.handleChange('supplier',e)}
+            />
+          </FormControl>
+          <Button raised color="primary" className={classes.button} onClick={(e) => this.handleSubmit(e)}>确认</Button>
       </div>
     );
   }
@@ -56,4 +102,9 @@ CommodityAdd.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(CommodityAdd);
+export default withStyles(styles)(connect((state) => ({
+  addCommodityFormData: state.commodity.addCommodityForm
+}),{
+  addCommodityFormChange,
+  addCommodityToDB
+})(CommodityAdd));
