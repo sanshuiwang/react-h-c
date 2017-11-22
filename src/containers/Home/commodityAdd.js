@@ -26,7 +26,6 @@ const styles = theme => ({
 
 class CommodityAdd extends React.Component {
   handleChange = (item,event) => {
-    console.log(200000,item);
     let addCommodityFormDataCopy = JSON.parse(JSON.stringify(this.props.addCommodityFormData));
     if(addCommodityFormDataCopy.hasOwnProperty(item)){
       addCommodityFormDataCopy[item] = event.target.value;
@@ -40,9 +39,13 @@ class CommodityAdd extends React.Component {
     if(addCommodityFormDataSubmit.hasOwnProperty('id') && addCommodityFormDataSubmit['id'].length == 0){
       addCommodityFormDataSubmit['id'] = (new Date()).getTime();
     }
-    this.props.addCommodityFormChange(addCommodityFormDataSubmit);
-    // this.props.addCommodityToDB(this.props.addCommodityFormData);
-    //promise研究中
+
+    new Promise((resolve, reject) => {
+      resolve(this.props.addCommodityFormChange(addCommodityFormDataSubmit));
+    }).then(() => {
+      this.props.addCommodityToDB(this.props.addCommodityFormData);
+    }).catch((error) => console.log("rejected:", error));
+
   }
 
   render() {

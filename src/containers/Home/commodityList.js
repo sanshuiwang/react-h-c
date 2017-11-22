@@ -52,15 +52,15 @@ function CommodityList(props) {
         </TableHead>
         <TableBody>
           {
-            commodityList.length !== 0 ? commodityList.map(n => {
+            commodityList.length !== 0 ? commodityList.map(listItem => {
             return (
-              <TableRow key={n.id}>
-                <TableCell>{n.id}</TableCell>
-                <TableCell>{n.name}</TableCell>
-                <TableCell numeric>{n.calories}</TableCell>
-                <TableCell numeric>{n.fat}</TableCell>
-                <TableCell numeric>{n.carbs}</TableCell>
-                <TableCell>{n.protein}</TableCell>
+              <TableRow key={listItem.id}>
+                <TableCell>{listItem.id}</TableCell>
+                <TableCell>{listItem.name}</TableCell>
+                <TableCell numeric>{listItem.num}</TableCell>
+                <TableCell numeric>{listItem.house}</TableCell>
+                <TableCell numeric>{listItem.price}</TableCell>
+                <TableCell>{listItem.supplier}</TableCell>
                 <TableCell>
                   <Tooltip id="tooltip-icon" title="编辑" placement="left-start">
                     <IconButton aria-label="Edit" className={classes.button}>
