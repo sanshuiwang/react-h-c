@@ -16,7 +16,7 @@ export const ADD_COMMODITY_TO_DB_REQUEST = "home/ADD_COMMODITY_TO_DB_REQUEST";
 export const ADD_COMMODITY_TO_DB_SUCCESS = "home/ADD_COMMODITY_TO_DB_SUCCESS";
 export const ADD_COMMODITY_TO_DB_FAIL = "home/ADD_COMMODITY_TO_DB_FAIL";
 
-export const ADD_COMMODITY_TO_STATE = "home/ADD_COMMODITY_TO_STATE";
+
 
 export function getCommodityList(){
   return {
@@ -51,28 +51,6 @@ export function addCommodityFormChange(addCommodityFormData){
 export function addCommodityToDB(addCommodityFormData){
   return {
     types: [ADD_COMMODITY_TO_DB_REQUEST,ADD_COMMODITY_TO_DB_SUCCESS,ADD_COMMODITY_TO_DB_FAIL],
-    promise: client => client.post(`${PATH}/commodityList`,addCommodityFormData),
-    afterSuccess:(dispatch,getState,response)=>{
-      /*请求成功后执行的函数,关闭弹层*/
-      let commodityListArrCopy = getState().commodity.commodityListArr.slice();
-      commodityListArrCopy.unshift(getState().commodity.addCommodityForm);
-      new Promise((resolve, reject) => {
-        resolve(dispatch(addCommodityToState(commodityListArrCopy)));
-      }).then(() => {
-        dispatch(addCommodityFormChange({
-          id: '',
-          name: '',
-          num: '',
-          house: '',
-          price: '',
-          supplier: ''
-        }));
-      });
-
-    }
+    promise: client => client.post(`${PATH}/commodityList`,addCommodityFormData)
   }
-}
-
-export function addCommodityToState(addCommodityToStateData){
-  return {type: ADD_COMMODITY_TO_STATE,addCommodityToStateData: addCommodityToStateData}
 }

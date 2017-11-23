@@ -7,7 +7,9 @@ import {
   DELECT_COMMODITY_INFO_FAIL,
   DELECT_COMMODITY_ALERT_DIALOG,
   ADD_COMMODITY_FORM,
-  ADD_COMMODITY_TO_STATE
+  ADD_COMMODITY_TO_DB_REQUEST,
+  ADD_COMMODITY_TO_DB_SUCCESS,
+  ADD_COMMODITY_TO_DB_FAIL
 } from './action';
 
 const initAlertDialog = {
@@ -76,23 +78,21 @@ export default function reducer(state=initState,action){
         ...state,
         addCommodityForm: action.addCommodityFormData
       };
-    case ADD_COMMODITY_INFO_REQUEST:
+    case ADD_COMMODITY_TO_DB_REQUEST:
       return {
         ...state
       };
-    case ADD_COMMODITY_INFO_SUCCESS:
+    case ADD_COMMODITY_TO_DB_SUCCESS:
+      let commodityListArrCopy = state.commodityListArr.slice();
+      commodityListArrCopy.unshift(state.addCommodityForm);
       return {
         ...state,
+        commodityListArr: commodityListArrCopy,
         addCommodityForm: initAddCommodityForm
       };
-    case ADD_COMMODITY_INFO_FAIL:
+    case ADD_COMMODITY_TO_DB_FAIL:
       return {
         ...state
-      };
-    case ADD_COMMODITY_TO_STATE:
-      return {
-        ...state,
-        commodityListArr: action.addCommodityToStateData
       };
     default:
       return state;
