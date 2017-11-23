@@ -49,7 +49,7 @@ class CommodityAdd extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, addCommodityFormData } = this.props;
 
     return (
       <div>
@@ -58,6 +58,7 @@ class CommodityAdd extends React.Component {
             <Input
               id="name-goods"
               type="text"
+              value={addCommodityFormData['name']}
               onChange={(e) => this.handleChange('name',e)}
             />
           </FormControl>
@@ -67,6 +68,7 @@ class CommodityAdd extends React.Component {
               id="num-goods"
               type='tel'
               endAdornment={<InputAdornment position="end">件</InputAdornment>}
+              value={addCommodityFormData['num']}
               onChange={(e) => this.handleChange('num',e)}/>
           </FormControl>
           <FormControl className={classes.formControl}>
@@ -75,6 +77,7 @@ class CommodityAdd extends React.Component {
               id="house-goods"
               type='tel'
               endAdornment={<InputAdornment position="end">#</InputAdornment>}
+              value={addCommodityFormData['house']}
               onChange={(e) => this.handleChange('house',e)}
             />
           </FormControl>
@@ -84,6 +87,7 @@ class CommodityAdd extends React.Component {
               id="price-goods"
               type='tel'
               endAdornment={<InputAdornment position="end">￥</InputAdornment>}
+              value={addCommodityFormData['price']}
               onChange={(e) => this.handleChange('price',e)}
             />
           </FormControl>
@@ -92,6 +96,7 @@ class CommodityAdd extends React.Component {
             <Input
               id="supplier-goods"
               type="text"
+              value={addCommodityFormData['supplier']}
               onChange={(e) => this.handleChange('supplier',e)}
             />
           </FormControl>
