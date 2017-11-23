@@ -1,6 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+
+import c from 'classnames';
+
 import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
@@ -8,19 +11,30 @@ import Button from 'material-ui/Button';
 import {addCommodityFormChange,addCommodityToDB} from './action';
 import {THEMBG} from '../../util/materialColor';
 
+import './styles.scss';
+
 const styles = theme => ({
   formControl: {
     display: 'block',
     margin: theme.spacing.unit
   },
-  rootInputLabel: {
+  shrinkInputLabel: {
     color: THEMBG
   },
-  underlineInput: {
-    backgroundColor: 'red'
+  inputWrapper: {
+    width: '300px',
+    margin: '0 auto'
   },
   button: {
     margin: theme.spacing.unit,
+    float: 'right'
+  },
+  raised: {
+    backgroundColor: THEMBG,
+    color: '#FFF'
+  },
+  keyboardFocused: {
+    backgroundColor: 'red'
   }
 });
 
@@ -52,55 +66,60 @@ class CommodityAdd extends React.Component {
     const { classes, addCommodityFormData } = this.props;
 
     return (
-      <div>
+      <div className={c(classes.inputWrapper,'clearfix')}>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="name-goods">商品名称</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="name-goods">商品名称</InputLabel>
             <Input
               id="name-goods"
               type="text"
+              fullWidth
               value={addCommodityFormData['name']}
               onChange={(e) => this.handleChange('name',e)}
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="num-goods">商品库存</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="num-goods">商品库存</InputLabel>
             <Input
               id="num-goods"
               type='tel'
+              fullWidth
               endAdornment={<InputAdornment position="end">件</InputAdornment>}
               value={addCommodityFormData['num']}
               onChange={(e) => this.handleChange('num',e)}/>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="house-goods">商品库房</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="house-goods">商品库房</InputLabel>
             <Input
               id="house-goods"
               type='tel'
+              fullWidth
               endAdornment={<InputAdornment position="end">#</InputAdornment>}
               value={addCommodityFormData['house']}
               onChange={(e) => this.handleChange('house',e)}
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="price-goods">商品价格</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="price-goods">商品价格</InputLabel>
             <Input
               id="price-goods"
               type='tel'
+              fullWidth
               endAdornment={<InputAdornment position="end">￥</InputAdornment>}
               value={addCommodityFormData['price']}
               onChange={(e) => this.handleChange('price',e)}
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ root: classes.rootInputLabel }} htmlFor="supplier-goods">供应商</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="supplier-goods">供应商</InputLabel>
             <Input
               id="supplier-goods"
               type="text"
+              fullWidth
               value={addCommodityFormData['supplier']}
               onChange={(e) => this.handleChange('supplier',e)}
             />
           </FormControl>
-          <Button raised color="primary" className={classes.button} onClick={(e) => this.handleSubmit(e)}>确认</Button>
+          <Button raised classes={{ raised: classes.raised,keyboardFocused: classes.keyboardFocused }} className={classes.button} onClick={(e) => this.handleSubmit(e)}>确认</Button>
       </div>
     );
   }
