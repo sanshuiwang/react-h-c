@@ -1,8 +1,14 @@
-.MuiInput-inkbar-163:after{
-  background-color: #00BCD4;
+$THEMBG: #00BCD4; //主题色
+$THEMBGMAT: #B2EBF2; //衬托色
+.input-focused:after {
+  background-color: $THEMBG;
 }
 
-.MuiButton-raised-211:hover{
-  background-color: #B2EBF2;
-  color: #00BCD4;
+.confirm-button:hover {
+  background-color: $THEMBGMAT;
+  color: $THEMBG;
+}
+
+.form-helper-text{
+  display: none;
 }

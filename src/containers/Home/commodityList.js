@@ -68,7 +68,7 @@ function CommodityList(props) {
                     </IconButton>
                   </Tooltip>
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
-                    <IconButton aria-label="Delete" onClick={() => props.delectCommodityAlertDialog({id: n.id,open: true, title: `删除ID (${n.id}) 商品`,content: `确认删除商品(${n.name})吗？`})}>
+                    <IconButton aria-label="Delete" onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}>
                       <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
                   </Tooltip>

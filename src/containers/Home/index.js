@@ -9,6 +9,8 @@ import CommodityAdd from './CommodityAdd';
 
 import {getCommodityList,delectCommodityAlertDialog,delectCommodityById} from './action';
 
+import './styles.scss';
+
 class Home extends Component {
   constructor(props){
     super(props);

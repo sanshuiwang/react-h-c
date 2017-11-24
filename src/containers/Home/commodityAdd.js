@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-
+import _ from 'lodash';
 import c from 'classnames';
 
 import { withStyles } from 'material-ui/styles';
@@ -10,8 +10,6 @@ import { FormControl, FormHelperText } from 'material-ui/Form';
 import Button from 'material-ui/Button';
 import {addCommodityFormChange,addCommodityToDB} from './action';
 import {THEMBG} from '../../util/materialColor';
-
-import './styles.scss';
 
 const styles = theme => ({
   formControl: {
@@ -42,7 +40,7 @@ class CommodityAdd extends React.Component {
   handleChange = (item,event) => {
     let addCommodityFormDataCopy = JSON.parse(JSON.stringify(this.props.addCommodityFormData));
     if(addCommodityFormDataCopy.hasOwnProperty(item)){
-      addCommodityFormDataCopy[item] = event.target.value;
+      addCommodityFormDataCopy[item] = _.trim(event.target.value);
     }
 
     this.props.addCommodityFormChange(addCommodityFormDataCopy);
@@ -68,19 +66,22 @@ class CommodityAdd extends React.Component {
     return (
       <div className={c(classes.inputWrapper,'clearfix')}>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="name-goods">商品名称</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="name-goods" required>商品名称</InputLabel>
             <Input
               id="name-goods"
+              className={ 'input-focused' }
               type="text"
               fullWidth
               value={addCommodityFormData['name']}
               onChange={(e) => this.handleChange('name',e)}
             />
+            <FormHelperText className={c({'form-helper-text': true })} error>请输入商品名称</FormHelperText>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="num-goods">商品库存</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="num-goods" required>商品库存</InputLabel>
             <Input
               id="num-goods"
+              className={ 'input-focused' }
               type='tel'
               fullWidth
               endAdornment={<InputAdornment position="end">件</InputAdornment>}
@@ -88,9 +89,10 @@ class CommodityAdd extends React.Component {
               onChange={(e) => this.handleChange('num',e)}/>
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="house-goods">商品库房</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="house-goods" required>商品库房</InputLabel>
             <Input
               id="house-goods"
+              className={ 'input-focused' }
               type='tel'
               fullWidth
               endAdornment={<InputAdornment position="end">#</InputAdornment>}
@@ -99,9 +101,10 @@ class CommodityAdd extends React.Component {
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="price-goods">商品价格</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="price-goods" required>商品价格</InputLabel>
             <Input
               id="price-goods"
+              className={ 'input-focused' }
               type='tel'
               fullWidth
               endAdornment={<InputAdornment position="end">￥</InputAdornment>}
@@ -110,16 +113,17 @@ class CommodityAdd extends React.Component {
             />
           </FormControl>
           <FormControl className={classes.formControl}>
-            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="supplier-goods">供应商</InputLabel>
+            <InputLabel classes={{ shrink: classes.shrinkInputLabel }} htmlFor="supplier-goods" required>供应商</InputLabel>
             <Input
               id="supplier-goods"
+              className={ 'input-focused' }
               type="text"
               fullWidth
               value={addCommodityFormData['supplier']}
               onChange={(e) => this.handleChange('supplier',e)}
             />
           </FormControl>
-          <Button raised classes={{ raised: classes.raised,keyboardFocused: classes.keyboardFocused }} className={classes.button} onClick={(e) => this.handleSubmit(e)}>确认</Button>
+          <Button raised classes={{ raised: classes.raised,keyboardFocused: classes.keyboardFocused }} className={c(classes.button,'confirm-button')} onClick={(e) => this.handleSubmit(e)}>确认</Button>
       </div>
     );
   }

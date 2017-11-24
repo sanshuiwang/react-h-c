@@ -9,22 +9,6 @@
       "supplier": "上海牛魔王"
     },
     {
-      "id": 1511358094561,
-      "name": "海苔",
-      "num": "333",
-      "house": "6",
-      "price": "22",
-      "supplier": "上海牛魔王食品有限公司"
-    },
-    {
-      "id": 1511359177014,
-      "name": "sshh",
-      "num": "1",
-      "house": "33",
-      "price": "7777",
-      "supplier": "上海牛魔王公司"
-    },
-    {
       "id": 1511359337299,
       "name": "面包",
       "num": "333",
@@ -33,60 +17,12 @@
       "supplier": "上海盼盼小面包有限公司"
     },
     {
-      "id": 1511359525650,
-      "name": "qqq",
-      "num": "1",
-      "house": "2",
-      "price": "3",
-      "supplier": "ddddd"
-    },
-    {
       "id": 1511359581812,
       "name": "www",
       "num": "1111",
       "house": "1",
       "price": "1",
       "supplier": "1"
-    },
-    {
-      "id": 1511359619369,
-      "name": "1",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": ""
-    },
-    {
-      "id": 1511359884314,
-      "name": "a",
-      "num": "1",
-      "house": "3",
-      "price": "22",
-      "supplier": "ssm"
-    },
-    {
-      "id": 1511360119135,
-      "name": "GAODIWA",
-      "num": "11",
-      "house": "3",
-      "price": "999",
-      "supplier": ""
-    },
-    {
-      "id": 1511360215938,
-      "name": "q",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": "1"
-    },
-    {
-      "id": 1511361539823,
-      "name": "煎饼果子",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": "煎饼果子"
     },
     {
       "id": 1511362205175,
@@ -111,94 +47,6 @@
       "house": "2",
       "price": "3",
       "supplier": "4"
-    },
-    {
-      "id": 1511399686787,
-      "name": "q",
-      "num": "4",
-      "house": "4",
-      "price": "4",
-      "supplier": "4"
-    },
-    {
-      "id": 1511401853532,
-      "name": "aaaa",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": "1"
-    },
-    {
-      "id": 1511423769234,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511431867654,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511431869196,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511431873018,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511432283137,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511432285153,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511432285905,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511432286506,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
-    },
-    {
-      "id": 1511432287104,
-      "name": "",
-      "num": "",
-      "house": "",
-      "price": "",
-      "supplier": ""
     }
   ]
 }
