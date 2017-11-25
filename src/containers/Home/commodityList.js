@@ -85,6 +85,7 @@ function CommodityList(props) {
 
 CommodityList.propTypes = {
   classes: PropTypes.object.isRequired,
+  delectCommodityAlertDialog: PropTypes.func
 };
 
 export default withStyles(styles)(connect(() => ({}),{

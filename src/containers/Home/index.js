@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import ScrollableTabsButtonAuto from '../../components/ScrollableTabsButtonAuto';
@@ -44,6 +45,14 @@ class Home extends Component {
       </div>
     );
   }
+}
+
+Home.propTypes = {
+  commodityListData: PropTypes.array,
+  alertDialogData: PropTypes.object,
+  getCommodityList: PropTypes.func,
+  delectCommodityById: PropTypes.func,
+  delectCommodityAlertDialog: PropTypes.func
 }
 
 export default connect((state) => ({

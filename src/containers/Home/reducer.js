@@ -9,7 +9,8 @@ import {
   ADD_COMMODITY_FORM,
   ADD_COMMODITY_TO_DB_REQUEST,
   ADD_COMMODITY_TO_DB_SUCCESS,
-  ADD_COMMODITY_TO_DB_FAIL
+  ADD_COMMODITY_TO_DB_FAIL,
+  ADD_COMMODITY_FORM_CONFIRM
 } from './action';
 
 const initAlertDialog = {
@@ -30,7 +31,8 @@ const initAddCommodityForm = {
 const initState = {
   commodityListArr: [],
   alertDialog: initAlertDialog,
-  addCommodityForm: initAddCommodityForm
+  addCommodityForm: initAddCommodityForm,
+  addCommodityConfirm: true
 };
 
 /*这里的...state语法，是和别人的Object.assign()起同一个作用，合并新旧state。我们这里是没效果的，但是我建议都写上这个哦*/
@@ -93,6 +95,11 @@ export default function reducer(state=initState,action){
     case ADD_COMMODITY_TO_DB_FAIL:
       return {
         ...state
+      };
+    case ADD_COMMODITY_FORM_CONFIRM:
+      return {
+        ...state,
+        addCommodityConfirm: action.addCommodityFormConfirmData
       };
     default:
       return state;

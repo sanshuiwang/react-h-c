@@ -16,7 +16,7 @@ export const ADD_COMMODITY_TO_DB_REQUEST = "home/ADD_COMMODITY_TO_DB_REQUEST";
 export const ADD_COMMODITY_TO_DB_SUCCESS = "home/ADD_COMMODITY_TO_DB_SUCCESS";
 export const ADD_COMMODITY_TO_DB_FAIL = "home/ADD_COMMODITY_TO_DB_FAIL";
 
-
+export const ADD_COMMODITY_FORM_CONFIRM = "home/ADD_COMMODITY_FORM_CONFIRM";
 
 export function getCommodityList(){
   return {
@@ -46,6 +46,10 @@ export function delectCommodityAlertDialog(alertDialogData) {
 
 export function addCommodityFormChange(addCommodityFormData){
   return {type: ADD_COMMODITY_FORM, addCommodityFormData: addCommodityFormData}
+}
+
+export function addCommodityFormConfirm(addCommodityFormConfirmData){
+  return {type: ADD_COMMODITY_FORM_CONFIRM,addCommodityFormConfirmData: addCommodityFormConfirmData}
 }
 
 export function addCommodityToDB(addCommodityFormData){
