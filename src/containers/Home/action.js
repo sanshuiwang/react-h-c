@@ -18,6 +18,8 @@ export const ADD_COMMODITY_TO_DB_FAIL = "home/ADD_COMMODITY_TO_DB_FAIL";
 
 export const ADD_COMMODITY_FORM_CONFIRM = "home/ADD_COMMODITY_FORM_CONFIRM";
 
+export const ADD_SUC_SNACKBAR_CHANGE = "home/ADD_SUC_SNACKBAR_CHANGE";
+
 export function getCommodityList(){
   return {
     types: [GET_COMMODITY_INFO_REQUEST,GET_COMMODITY_INFO_SUCCESS,GET_COMMODITY_INFO_FAIL],
@@ -57,4 +59,8 @@ export function addCommodityToDB(addCommodityFormData){
     types: [ADD_COMMODITY_TO_DB_REQUEST,ADD_COMMODITY_TO_DB_SUCCESS,ADD_COMMODITY_TO_DB_FAIL],
     promise: client => client.post(`${PATH}/commodityList`,addCommodityFormData)
   }
+}
+
+export function addSucSnackbarChange(addSucSnackbarData) {
+  return {type: ADD_SUC_SNACKBAR_CHANGE,addSucSnackbarData: addSucSnackbarData}
 }

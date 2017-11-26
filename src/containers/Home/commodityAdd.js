@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
@@ -33,7 +33,7 @@ const styles = theme => ({
   }
 });
 
-class CommodityAdd extends React.Component {
+class CommodityAdd extends Component {
 
   handleChange = (item,event) => {
     let addCommodityFormDataCopy = JSON.parse(JSON.stringify(this.props.addCommodityFormData));

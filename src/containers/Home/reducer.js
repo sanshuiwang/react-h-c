@@ -10,15 +10,19 @@ import {
   ADD_COMMODITY_TO_DB_REQUEST,
   ADD_COMMODITY_TO_DB_SUCCESS,
   ADD_COMMODITY_TO_DB_FAIL,
-  ADD_COMMODITY_FORM_CONFIRM
+  ADD_COMMODITY_FORM_CONFIRM,
+  ADD_SUC_SNACKBAR_CHANGE
 } from './action';
 
+/*删除商品的弹层数据*/
 const initAlertDialog = {
   id: '',
   open: false,
   title: '',
   content: ''
 }
+
+/*增加商品的表单数据*/
 const initAddCommodityForm = {
   id: '',
   name: '',
@@ -28,11 +32,21 @@ const initAddCommodityForm = {
   supplier: ''
 }
 
+const initSnackbar = {
+  key: '',
+  open: false,
+  transition: '',
+  messageId: '',
+  message: ''
+}
+
+/*初始化所有的state数据*/
 const initState = {
   commodityListArr: [],
   alertDialog: initAlertDialog,
   addCommodityForm: initAddCommodityForm,
-  addCommodityConfirm: true
+  addCommodityConfirm: true,
+  addSucSnackbar: initSnackbar
 };
 
 /*这里的...state语法，是和别人的Object.assign()起同一个作用，合并新旧state。我们这里是没效果的，但是我建议都写上这个哦*/
@@ -87,10 +101,18 @@ export default function reducer(state=initState,action){
     case ADD_COMMODITY_TO_DB_SUCCESS:
       let commodityListArrCopy = state.commodityListArr.slice();
       commodityListArrCopy.unshift(state.addCommodityForm);
+      let addSucSnackbarCopy = JSON.parse(JSON.stringify(state.addSucSnackbar));
+      addSucSnackbarCopy['key'] = (new Date()).getTime();
+      addSucSnackbarCopy['open'] = true;
+      addSucSnackbarCopy['transition'] = 'TransitionRight';
+      addSucSnackbarCopy['messageId'] = 'message-id-'+addSucSnackbarCopy['key'];
+      addSucSnackbarCopy['message'] = `商品 ${state.addCommodityForm.name} 添加成功`;
+
       return {
         ...state,
         commodityListArr: commodityListArrCopy,
-        addCommodityForm: initAddCommodityForm
+        addCommodityForm: initAddCommodityForm,
+        addSucSnackbar: addSucSnackbarCopy
       };
     case ADD_COMMODITY_TO_DB_FAIL:
       return {
@@ -100,6 +122,11 @@ export default function reducer(state=initState,action){
       return {
         ...state,
         addCommodityConfirm: action.addCommodityFormConfirmData
+      };
+    case ADD_SUC_SNACKBAR_CHANGE:
+      return {
+        ...state,
+        addSucSnackbar: action.addSucSnackbarData
       };
     default:
       return state;
