@@ -25,23 +25,24 @@ function Transition(props) {
 
 class AlertDialog extends React.Component {
   render() {
-    const {classes,alertDialogData,handleRequestClose,handleRequestDelect} = this.props;
+    const {classes,alertDialogData,handleRequestCloseDialog,handleRequestConfirm} = this.props;
     return (
       <div>
         <Dialog
           open={alertDialogData.open}
-          onRequestClose={handleRequestClose}
+          onRequestClose={handleRequestCloseDialog}
           transition={Transition}
           >
             <DialogTitle>{alertDialogData.title}</DialogTitle>
             <DialogContent>
               <DialogContentText>{alertDialogData.content}</DialogContentText>
+              {this.props.children}
             </DialogContent>
             <DialogActions>
-              <Button onClick={handleRequestClose} classes={{
+              <Button onClick={handleRequestCloseDialog} classes={{
                 label : classes.label
               }}>取消</Button>
-              <Button onClick={handleRequestDelect} classes={{
+              <Button onClick={handleRequestConfirm} classes={{
                 label : classes.label
               }}>确认</Button>
             </DialogActions>
@@ -53,7 +54,7 @@ class AlertDialog extends React.Component {
 AlertDialog.propTypes = {
   classes: PropTypes.object,
   alertDialogData: PropTypes.object,
-  handleRequestClose: PropTypes.func,
-  handleRequestDelect: PropTypes.func
+  handleRequestCloseDialog: PropTypes.func,
+  handleRequestConfirm: PropTypes.func
 }
 export default withStyles(styles)(AlertDialog);

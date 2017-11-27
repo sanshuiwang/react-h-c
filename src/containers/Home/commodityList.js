@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {delectCommodityAlertDialog} from './action';
+import {delectCommodityAlertDialog,updateCommodityAlertDialog} from './action';
 
 import {THEMBG,delectIcon} from '../../util/materialColor';
 
@@ -63,12 +63,19 @@ function CommodityList(props) {
                 <TableCell>{listItem.supplier}</TableCell>
                 <TableCell>
                   <Tooltip id="tooltip-icon" title="编辑" placement="left-start">
-                    <IconButton aria-label="Edit" className={classes.button}>
+                    <IconButton
+                      aria-label="Edit"
+                      className={classes.button}
+                      onClick={() => props.updateCommodityAlertDialog({id: listItem.id,open: true, title: `编辑ID (${listItem.id}) 商品属性`,content: `更新商品(${listItem.name})属性，点击确认完成更新！`})}
+                    >
                       <ModeEdit className={classes.icon} style={{ color: THEMBG }}/>
                     </IconButton>
                   </Tooltip>
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
-                    <IconButton aria-label="Delete" onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}>
+                    <IconButton
+                      aria-label="Delete"
+                      onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}
+                    >
                       <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
                   </Tooltip>
@@ -85,9 +92,11 @@ function CommodityList(props) {
 
 CommodityList.propTypes = {
   classes: PropTypes.object.isRequired,
-  delectCommodityAlertDialog: PropTypes.func
+  delectCommodityAlertDialog: PropTypes.func,
+  updateCommodityAlertDialog: PropTypes.func
 };
 
 export default withStyles(styles)(connect(() => ({}),{
-    delectCommodityAlertDialog
+    delectCommodityAlertDialog,
+    updateCommodityAlertDialog
   })(CommodityList));

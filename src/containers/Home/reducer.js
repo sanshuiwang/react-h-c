@@ -32,6 +32,7 @@ const initAddCommodityForm = {
   supplier: ''
 }
 
+/*增加商品成功后的提示*/
 const initSnackbar = {
   key: '',
   open: false,

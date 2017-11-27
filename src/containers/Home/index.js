@@ -27,13 +27,13 @@ class Home extends Component {
     this.props.getCommodityList();
   }
 
-  handleRequestClose = () => {
+  handleRequestCloseDialog = () => {
     let alertDialogDataCopy = JSON.parse(JSON.stringify(this.props.alertDialogData));
     alertDialogDataCopy.open = false;
     this.props.delectCommodityAlertDialog(alertDialogDataCopy);
   }
 
-  handleRequestDelect = () => {
+  handleRequestConfirm = () => {
     let id = this.props.alertDialogData.id;
     this.props.delectCommodityById(id);
   }
@@ -54,11 +54,14 @@ class Home extends Component {
     ];
     return (
       <div>
-        <ScrollableTabsButtonAuto tabsItems={commodityTabs} itemNodes={commodityNodes}/>
+        <ScrollableTabsButtonAuto
+          tabsItems={commodityTabs}
+          itemNodes={commodityNodes}
+        />
         <AlertDialog
           alertDialogData={alertDialogData}
-          handleRequestClose={this.handleRequestClose}
-          handleRequestDelect={this.handleRequestDelect}
+          handleRequestCloseDialog={this.handleRequestCloseDialog}
+          handleRequestConfirm={this.handleRequestConfirm}
         />
         <SnackbarMsg
           SnackbarData={addSucSnackbar}

@@ -1,116 +1,12 @@
 {
   "commodityList": [
     {
-      "id": 1511357105874,
-      "name": "www",
-      "num": "1",
-      "house": "2",
-      "price": "4444",
-      "supplier": "上海牛魔王"
-    },
-    {
-      "id": 1511359337299,
-      "name": "面包",
-      "num": "333",
-      "house": "5",
-      "price": "9",
-      "supplier": "上海盼盼小面包有限公司"
-    },
-    {
-      "id": 1511359581812,
-      "name": "www",
-      "num": "1111",
-      "house": "1",
-      "price": "1",
-      "supplier": "1"
-    },
-    {
-      "id": 1511362205175,
-      "name": "qsssss",
-      "num": "1",
-      "house": "11",
-      "price": "11",
-      "supplier": "11"
-    },
-    {
-      "id": 1511362675013,
-      "name": "还带",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": "1"
-    },
-    {
-      "id": 1511363859160,
-      "name": "海绵宝宝",
-      "num": "1",
-      "house": "2",
-      "price": "3",
-      "supplier": "4"
-    },
-    {
-      "id": 1511621881311,
-      "name": "a",
-      "num": "1",
-      "house": "1",
-      "price": "1",
-      "supplier": "1"
-    },
-    {
-      "id": 1511621916901,
-      "name": "2",
-      "num": "2",
-      "house": "2",
-      "price": "2",
-      "supplier": "2"
-    },
-    {
-      "id": 1511680081947,
-      "name": "q",
-      "num": "q",
-      "house": "q",
-      "price": "q",
-      "supplier": "q"
-    },
-    {
-      "id": 1511680143715,
-      "name": "s",
-      "num": "s",
-      "house": "s",
-      "price": "s",
-      "supplier": "s"
-    },
-    {
-      "id": 1511680170562,
-      "name": "w",
-      "num": "w",
-      "house": "w",
-      "price": "w",
-      "supplier": "w"
-    },
-    {
-      "id": 1511680259889,
-      "name": "aw",
-      "num": "d",
-      "house": "d",
-      "price": "d",
-      "supplier": "d"
-    },
-    {
-      "id": 1511680348336,
-      "name": "g",
-      "num": "g",
-      "house": "g",
-      "price": "g",
-      "supplier": "g"
-    },
-    {
-      "id": 1511680962579,
-      "name": "a",
-      "num": "c",
-      "house": "c",
-      "price": "c",
-      "supplier": "c"
+      "id": 1511774249524,
+      "name": "煎饼果子",
+      "num": "22",
+      "house": "4",
+      "price": "12",
+      "supplier": "上海牛魔王有限公司"
     }
   ]
 }
