@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import {commodityAlertDialog,updateCommodityAlertDialog} from './action';
+import {delectCommodityAlertDialog,updateCommodityAlertDialog} from './action';
 
 import {THEMBG,delectIcon} from '../../util/materialColor';
 
@@ -74,7 +74,7 @@ function CommodityList(props) {
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
                     <IconButton
                       aria-label="Delete"
-                      onClick={() => props.commodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}
+                      onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}
                     >
                       <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
@@ -92,11 +92,11 @@ function CommodityList(props) {
 
 CommodityList.propTypes = {
   classes: PropTypes.object.isRequired,
-  commodityAlertDialog: PropTypes.func,
+  delectCommodityAlertDialog: PropTypes.func,
   updateCommodityAlertDialog: PropTypes.func
 };
 
 export default withStyles(styles)(connect(() => ({}),{
-    commodityAlertDialog,
+    delectCommodityAlertDialog,
     updateCommodityAlertDialog
   })(CommodityList));

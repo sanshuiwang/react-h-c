@@ -8,9 +8,9 @@ export const DELECT_COMMODITY_INFO_REQUEST = "home/DELECT_COMMODITY_INFO_REQUEST
 export const DELECT_COMMODITY_INFO_SUCCESS = "home/DELECT_COMMODITY_INFO_SUCCESS";
 export const DELECT_COMMODITY_INFO_FAIL = "home/DELECT_COMMODITY_INFO_FAIL";
 
-export const COMMODITY_ALERT_DIALOG = "home/COMMODITY_ALERT_DIALOG";
+export const DELECT_COMMODITY_ALERT_DIALOG = "home/DELECT_COMMODITY_ALERT_DIALOG";
 
-export const COMMODITY_FORM = "home/COMMODITY_FORM";
+export const ADD_COMMODITY_FORM = "home/ADD_COMMODITY_FORM";
 
 export const ADD_COMMODITY_TO_DB_REQUEST = "home/ADD_COMMODITY_TO_DB_REQUEST";
 export const ADD_COMMODITY_TO_DB_SUCCESS = "home/ADD_COMMODITY_TO_DB_SUCCESS";
@@ -37,17 +37,17 @@ export function delectCommodityById(id){
       let stateData = getState();
       let stateCommodity = JSON.parse(JSON.stringify(stateData.commodity.alertDialog));
       stateCommodity.open = false;
-      dispatch(commodityAlertDialog(stateCommodity));
+      dispatch(delectCommodityAlertDialog(stateCommodity));
     }
   }
 }
 
-export function commodityAlertDialog(alertDialogData) {
-  return {type: COMMODITY_ALERT_DIALOG, alertDialogData: alertDialogData}
+export function delectCommodityAlertDialog(alertDialogData) {
+  return {type: DELECT_COMMODITY_ALERT_DIALOG, alertDialogData: alertDialogData}
 }
 
-export function commodityFormChange(commodityFormData){
-  return {type: COMMODITY_FORM, commodityFormData: commodityFormData}
+export function addCommodityFormChange(addCommodityFormData){
+  return {type: ADD_COMMODITY_FORM, addCommodityFormData: addCommodityFormData}
 }
 
 export function addCommodityFormConfirm(addCommodityFormConfirmData){

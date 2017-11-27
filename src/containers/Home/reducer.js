@@ -5,8 +5,8 @@ import {
   DELECT_COMMODITY_INFO_REQUEST,
   DELECT_COMMODITY_INFO_SUCCESS,
   DELECT_COMMODITY_INFO_FAIL,
-  COMMODITY_ALERT_DIALOG,
-  COMMODITY_FORM,
+  DELECT_COMMODITY_ALERT_DIALOG,
+  ADD_COMMODITY_FORM,
   ADD_COMMODITY_TO_DB_REQUEST,
   ADD_COMMODITY_TO_DB_SUCCESS,
   ADD_COMMODITY_TO_DB_FAIL,
@@ -23,7 +23,7 @@ const initAlertDialog = {
 }
 
 /*增加商品的表单数据*/
-const initCommodityForm = {
+const initAddCommodityForm = {
   id: '',
   name: '',
   num: '',
@@ -45,7 +45,7 @@ const initSnackbar = {
 const initState = {
   commodityListArr: [],
   alertDialog: initAlertDialog,
-  commodityForm: initCommodityForm,
+  addCommodityForm: initAddCommodityForm,
   addCommodityConfirm: true,
   addSucSnackbar: initSnackbar
 };
@@ -85,15 +85,15 @@ export default function reducer(state=initState,action){
       return {
         ...state
       };
-    case COMMODITY_ALERT_DIALOG:
+    case DELECT_COMMODITY_ALERT_DIALOG:
       return {
         ...state,
         alertDialog: action.alertDialogData
       };
-    case COMMODITY_FORM:
+    case ADD_COMMODITY_FORM:
       return {
         ...state,
-        commodityForm: action.commodityFormData
+        addCommodityForm: action.addCommodityFormData
       };
     case ADD_COMMODITY_TO_DB_REQUEST:
       return {
@@ -101,18 +101,18 @@ export default function reducer(state=initState,action){
       };
     case ADD_COMMODITY_TO_DB_SUCCESS:
       let commodityListArrCopy = state.commodityListArr.slice();
-      commodityListArrCopy.unshift(state.commodityForm);
+      commodityListArrCopy.unshift(state.addCommodityForm);
       let addSucSnackbarCopy = JSON.parse(JSON.stringify(state.addSucSnackbar));
       addSucSnackbarCopy['key'] = (new Date()).getTime();
       addSucSnackbarCopy['open'] = true;
       addSucSnackbarCopy['transition'] = 'TransitionRight';
       addSucSnackbarCopy['messageId'] = 'message-id-'+addSucSnackbarCopy['key'];
-      addSucSnackbarCopy['message'] = `商品 ${state.commodityForm.name} 添加成功`;
+      addSucSnackbarCopy['message'] = `商品 ${state.addCommodityForm.name} 添加成功`;
 
       return {
         ...state,
         commodityListArr: commodityListArrCopy,
-        commodityForm: initCommodityForm,
+        addCommodityForm: initAddCommodityForm,
         addSucSnackbar: addSucSnackbarCopy
       };
     case ADD_COMMODITY_TO_DB_FAIL:

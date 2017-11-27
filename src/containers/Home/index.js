@@ -11,7 +11,7 @@ import CommodityAdd from './CommodityAdd';
 
 import {
   getCommodityList,
-  commodityAlertDialog,
+  delectCommodityAlertDialog,
   delectCommodityById,
   addSucSnackbarChange
 } from './action';
@@ -30,10 +30,10 @@ class Home extends Component {
   handleRequestCloseDialog = () => {
     let alertDialogDataCopy = JSON.parse(JSON.stringify(this.props.alertDialogData));
     alertDialogDataCopy.open = false;
-    this.props.commodityAlertDialog(alertDialogDataCopy);
+    this.props.delectCommodityAlertDialog(alertDialogDataCopy);
   }
 
-  handleRequestDelConfirm = () => {
+  handleRequestConfirm = () => {
     let id = this.props.alertDialogData.id;
     this.props.delectCommodityById(id);
   }
@@ -61,7 +61,7 @@ class Home extends Component {
         <AlertDialog
           alertDialogData={alertDialogData}
           handleRequestCloseDialog={this.handleRequestCloseDialog}
-          handleRequestConfirm={this.handleRequestDelConfirm}
+          handleRequestConfirm={this.handleRequestConfirm}
         />
         <SnackbarMsg
           SnackbarData={addSucSnackbar}
@@ -77,7 +77,7 @@ Home.propTypes = {
   alertDialogData: PropTypes.object,
   getCommodityList: PropTypes.func,
   delectCommodityById: PropTypes.func,
-  commodityAlertDialog: PropTypes.func
+  delectCommodityAlertDialog: PropTypes.func
 }
 
 export default connect((state) => ({
@@ -87,6 +87,6 @@ export default connect((state) => ({
 }),{
   getCommodityList,
   delectCommodityById,
-  commodityAlertDialog,
+  delectCommodityAlertDialog,
   addSucSnackbarChange
 })(Home);
