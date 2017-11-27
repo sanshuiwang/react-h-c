@@ -27,25 +27,25 @@ class Home extends Component {
     this.props.getCommodityList();
   }
 
-  handleRequestCloseDialog = () => {
-    let alertDialogDataCopy = JSON.parse(JSON.stringify(this.props.alertDialogData));
+  handleRequestCloseDelDialog = () => {
+    let alertDialogDataCopy = JSON.parse(JSON.stringify(this.props.delAlertDialogData));
     alertDialogDataCopy.open = false;
     this.props.delectCommodityAlertDialog(alertDialogDataCopy);
   }
 
   handleRequestDelConfirm = () => {
-    let id = this.props.alertDialogData.id;
+    let id = this.props.delAlertDialogData.id;
     this.props.delectCommodityById(id);
   }
 
-  handleRequestCloseSnackbar = () => {
+  handleRequestCloseSnackbarAddSuc = () => {
     let addSucSnackbarCopy = JSON.parse(JSON.stringify(this.props.addSucSnackbar));
     addSucSnackbarCopy['open'] = false;
     this.props.addSucSnackbarChange(addSucSnackbarCopy);
   }
 
   render(){
-    const {commodityListData,alertDialogData,addSucSnackbar} = this.props;
+    const {commodityListData,delAlertDialogData,addSucSnackbar} = this.props;
     const commodityTabs = ['列表','添加','搜索'];
     const commodityNodes = [
       <CommodityList commodityList={commodityListData} />,
@@ -59,13 +59,13 @@ class Home extends Component {
           itemNodes={commodityNodes}
         />
         <AlertDialog
-          alertDialogData={alertDialogData}
-          handleRequestCloseDialog={this.handleRequestCloseDialog}
+          alertDialogData={delAlertDialogData}
+          handleRequestCloseDialog={this.handleRequestCloseDelDialog}
           handleRequestConfirm={this.handleRequestDelConfirm}
         />
         <SnackbarMsg
           SnackbarData={addSucSnackbar}
-          handleRequestCloseSnackbar={this.handleRequestCloseSnackbar}
+          handleRequestCloseSnackbar={this.handleRequestCloseSnackbarAddSuc}
         />
       </div>
     );
@@ -74,7 +74,7 @@ class Home extends Component {
 
 Home.propTypes = {
   commodityListData: PropTypes.array,
-  alertDialogData: PropTypes.object,
+  delAlertDialogData: PropTypes.object,
   getCommodityList: PropTypes.func,
   delectCommodityById: PropTypes.func,
   delectCommodityAlertDialog: PropTypes.func
@@ -82,7 +82,7 @@ Home.propTypes = {
 
 export default connect((state) => ({
   commodityListData: state.commodity.commodityListArr,
-  alertDialogData: state.commodity.alertDialog,
+  delAlertDialogData: state.commodity.delAlertDialog,
   addSucSnackbar: state.commodity.addSucSnackbar
 }),{
   getCommodityList,

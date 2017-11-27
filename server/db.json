@@ -1,3 +1,12 @@
 {
-  "commodityList": []
+  "commodityList": [
+    {
+      "id": 1511795052343,
+      "name": "三明治",
+      "num": "1",
+      "house": "2",
+      "price": "4",
+      "supplier": "上海肯德基"
+    }
+  ]
 }

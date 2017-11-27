@@ -35,7 +35,7 @@ export function delectCommodityById(id){
     afterSuccess:(dispatch,getState,response)=>{
       /*请求成功后执行的函数,关闭弹层*/
       let stateData = getState();
-      let stateCommodity = JSON.parse(JSON.stringify(stateData.commodity.alertDialog));
+      let stateCommodity = JSON.parse(JSON.stringify(stateData.commodity.delAlertDialog));
       stateCommodity.open = false;
       dispatch(delectCommodityAlertDialog(stateCommodity));
     }
@@ -67,6 +67,6 @@ export function addSucSnackbarChange(addSucSnackbarData) {
 
 export function updateCommodityAlertDialog(updateDialogData) {
   /*通过id获取要进行更新的数据*/
-  
+
   /*获取成功后，显示弹层数据以及form*/
 }

@@ -15,7 +15,7 @@ import {
 } from './action';
 
 /*删除商品的弹层数据*/
-const initAlertDialog = {
+const initDelAlertDialog = {
   id: '',
   open: false,
   title: '',
@@ -44,7 +44,7 @@ const initSnackbar = {
 /*初始化所有的state数据*/
 const initState = {
   commodityListArr: [],
-  alertDialog: initAlertDialog,
+  delAlertDialog: initDelAlertDialog,
   addCommodityForm: initAddCommodityForm,
   addCommodityConfirm: true,
   addSucSnackbar: initSnackbar
@@ -88,7 +88,7 @@ export default function reducer(state=initState,action){
     case DELECT_COMMODITY_ALERT_DIALOG:
       return {
         ...state,
-        alertDialog: action.alertDialogData
+        delAlertDialog: action.alertDialogData
       };
     case ADD_COMMODITY_FORM:
       return {
