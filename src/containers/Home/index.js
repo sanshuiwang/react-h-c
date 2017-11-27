@@ -33,7 +33,7 @@ class Home extends Component {
     this.props.delectCommodityAlertDialog(alertDialogDataCopy);
   }
 
-  handleRequestConfirm = () => {
+  handleRequestDelConfirm = () => {
     let id = this.props.alertDialogData.id;
     this.props.delectCommodityById(id);
   }
@@ -61,7 +61,7 @@ class Home extends Component {
         <AlertDialog
           alertDialogData={alertDialogData}
           handleRequestCloseDialog={this.handleRequestCloseDialog}
-          handleRequestConfirm={this.handleRequestConfirm}
+          handleRequestConfirm={this.handleRequestDelConfirm}
         />
         <SnackbarMsg
           SnackbarData={addSucSnackbar}

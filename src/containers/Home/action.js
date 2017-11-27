@@ -67,6 +67,6 @@ export function addSucSnackbarChange(addSucSnackbarData) {
 
 export function updateCommodityAlertDialog(updateDialogData) {
   /*通过id获取要进行更新的数据*/
-
+  
   /*获取成功后，显示弹层数据以及form*/
 }
