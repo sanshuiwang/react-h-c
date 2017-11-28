@@ -32,7 +32,7 @@ class FormInput extends Component {
             className={ 'input-focused' }
             type="text"
             fullWidth
-            value={FormInputData['ID']}
+            value={FormInputData['id']}
           />
         </FormControl>
         <FormControl className={classes.formControl}>

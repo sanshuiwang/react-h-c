@@ -20,6 +20,18 @@ export const ADD_COMMODITY_FORM_CONFIRM = "home/ADD_COMMODITY_FORM_CONFIRM";
 
 export const ADD_SUC_SNACKBAR_CHANGE = "home/ADD_SUC_SNACKBAR_CHANGE";
 
+export const UPDATE_COMMODITY_GET_INFO_REQUEST = "home/UPDATE_COMMODITY_GET_INFO_REQUEST";
+export const UPDATE_COMMODITY_GET_INFO_SUCCESS = "home/UPDATE_COMMODITY_GET_INFO_SUCCESS";
+export const UPDATE_COMMODITY_GET_INFO_FAIL = "home/UPDATE_COMMODITY_GET_INFO_FAIL";
+
+export const UPDATE_ALERT_DIALOG_CHANGE = "home/UPDATE_ALERT_DIALOG_CHANGE";
+
+export const UPDATE_COMMODITY_FORM = "home/UPDATE_COMMODITY_FORM";
+
+export const UPDATE_COMMODITY_INFO_REQUEST = "home/UPDATE_COMMODITY_INFO_REQUEST";
+export const UPDATE_COMMODITY_INFO_SUCCESS = "home/UPDATE_COMMODITY_INFO_SUCCESS";
+export const UPDATE_COMMODITY_INFO_FAIL = "home/UPDATE_COMMODITY_INFO_FAIL";
+
 export function getCommodityList(){
   return {
     types: [GET_COMMODITY_INFO_REQUEST,GET_COMMODITY_INFO_SUCCESS,GET_COMMODITY_INFO_FAIL],
@@ -67,6 +79,25 @@ export function addSucSnackbarChange(addSucSnackbarData) {
 
 export function updateCommodityAlertDialog(updateDialogData) {
   /*通过id获取要进行更新的数据*/
-
+  return {
+    types: [UPDATE_COMMODITY_GET_INFO_REQUEST,UPDATE_COMMODITY_GET_INFO_SUCCESS,UPDATE_COMMODITY_GET_INFO_FAIL],
+    promise: client => client.get(`${PATH}/commodityList/${updateDialogData.id}`),
+    updateDialogData: updateDialogData
+  }
   /*获取成功后，显示弹层数据以及form*/
+}
+
+export function updateAlertDialogChange(updateAlertDialog){
+  return {type: UPDATE_ALERT_DIALOG_CHANGE,updateAlertDialog: updateAlertDialog}
+}
+
+export function updateCommodityFormChange(updateCommodityForm){
+  return {type: UPDATE_COMMODITY_FORM, updateCommodityForm: updateCommodityForm}
+}
+
+export function updateCommodityFormToDB(updateCommodityForm){
+  return {
+    types: [UPDATE_COMMODITY_INFO_REQUEST,UPDATE_COMMODITY_INFO_SUCCESS,UPDATE_COMMODITY_INFO_FAIL],
+    promise: client => client.put(`${PATH}/commodityList/${updateCommodityForm.id}`,updateCommodityForm)
+  }
 }

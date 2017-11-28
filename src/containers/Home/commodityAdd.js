@@ -44,7 +44,7 @@ class CommodityAdd extends Component {
     new Promise((resolve, reject) => {
       resolve(this.props.addCommodityFormChange(addCommodityFormDataCopy));
     }).then(() => {
-      var inputKeysArr = Object.getOwnPropertyNames(addCommodityFormDataCopy);
+      let inputKeysArr = Object.getOwnPropertyNames(addCommodityFormDataCopy);
 
       for(var i = 1; i < inputKeysArr.length; i++){
         if(addCommodityFormDataCopy[inputKeysArr[i]].length === 0){

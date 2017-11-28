@@ -11,19 +11,28 @@ import {
   ADD_COMMODITY_TO_DB_SUCCESS,
   ADD_COMMODITY_TO_DB_FAIL,
   ADD_COMMODITY_FORM_CONFIRM,
-  ADD_SUC_SNACKBAR_CHANGE
+  ADD_SUC_SNACKBAR_CHANGE,
+  UPDATE_COMMODITY_GET_INFO_REQUEST,
+  UPDATE_COMMODITY_GET_INFO_SUCCESS,
+  UPDATE_COMMODITY_GET_INFO_FAIL,
+  UPDATE_ALERT_DIALOG_CHANGE,
+  UPDATE_COMMODITY_FORM,
+  UPDATE_COMMODITY_INFO_REQUEST,
+  UPDATE_COMMODITY_INFO_SUCCESS,
+  UPDATE_COMMODITY_INFO_FAIL
 } from './action';
 
 /*删除商品的弹层数据*/
-const initDelAlertDialog = {
+const initAlertDialog = {
   id: '',
   open: false,
   title: '',
-  content: ''
+  content: '',
+  disabledConfirm: false
 }
 
 /*增加商品的表单数据*/
-const initAddCommodityForm = {
+const initCommodityForm = {
   id: '',
   name: '',
   num: '',
@@ -44,10 +53,12 @@ const initSnackbar = {
 /*初始化所有的state数据*/
 const initState = {
   commodityListArr: [],
-  delAlertDialog: initDelAlertDialog,
-  addCommodityForm: initAddCommodityForm,
+  delAlertDialog: initAlertDialog,
+  addCommodityForm: initCommodityForm,
   addCommodityConfirm: true,
-  addSucSnackbar: initSnackbar
+  addSucSnackbar: initSnackbar,
+  updateAlertDialog: initAlertDialog,
+  updateCommodityForm: initCommodityForm
 };
 
 /*这里的...state语法，是和别人的Object.assign()起同一个作用，合并新旧state。我们这里是没效果的，但是我建议都写上这个哦*/
@@ -112,7 +123,7 @@ export default function reducer(state=initState,action){
       return {
         ...state,
         commodityListArr: commodityListArrCopy,
-        addCommodityForm: initAddCommodityForm,
+        addCommodityForm: initCommodityForm,
         addSucSnackbar: addSucSnackbarCopy
       };
     case ADD_COMMODITY_TO_DB_FAIL:
@@ -128,6 +139,56 @@ export default function reducer(state=initState,action){
       return {
         ...state,
         addSucSnackbar: action.addSucSnackbarData
+      };
+    case UPDATE_COMMODITY_GET_INFO_REQUEST:
+      return {
+        ...state
+      };
+    case UPDATE_COMMODITY_GET_INFO_SUCCESS:
+      return {
+        ...state,
+        updateAlertDialog: action.updateDialogData,
+        updateCommodityForm: action.result.data
+      };
+    case UPDATE_COMMODITY_GET_INFO_FAIL:
+      return {
+        ...state
+      };
+    case UPDATE_ALERT_DIALOG_CHANGE:
+      return {
+        ...state,
+        updateAlertDialog: action.updateAlertDialog
+      };
+    case UPDATE_COMMODITY_FORM:
+      return {
+        ...state,
+        updateCommodityForm: action.updateCommodityForm
+      };
+    case UPDATE_COMMODITY_INFO_REQUEST:
+      return {
+        ...state
+      };
+    case UPDATE_COMMODITY_INFO_SUCCESS:
+      let commodityListArrUpdateCopy = state.commodityListArr.slice();
+      let index;
+      for (let i = 0; i < commodityListArrUpdateCopy.length; i++) {
+        if(commodityListArrUpdateCopy[i].id === state.updateCommodityForm.id){
+          index = i;
+          break;
+        };
+      }
+      commodityListArrUpdateCopy.splice(index,1,state.updateCommodityForm);
+
+      let updateAlertDialogCopy = JSON.parse(JSON.stringify(state.updateAlertDialog));
+      if(updateAlertDialogCopy['open']) {updateAlertDialogCopy['open'] = false};
+      return {
+        ...state,
+        commodityListArr: commodityListArrUpdateCopy,
+        updateAlertDialog: updateAlertDialogCopy
+      };
+    case UPDATE_COMMODITY_INFO_FAIL:
+      return {
+        ...state
       };
     default:
       return state;

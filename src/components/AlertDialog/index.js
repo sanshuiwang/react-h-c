@@ -44,7 +44,7 @@ class AlertDialog extends React.Component {
               }}>取消</Button>
               <Button onClick={handleRequestConfirm} classes={{
                 label : classes.label
-              }}>确认</Button>
+              }} disabled={alertDialogData.disabledConfirm}>确认</Button>
             </DialogActions>
         </Dialog>
       </div>

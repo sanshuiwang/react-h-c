@@ -66,7 +66,7 @@ function CommodityList(props) {
                     <IconButton
                       aria-label="Edit"
                       className={classes.button}
-                      onClick={() => props.updateCommodityAlertDialog({id: listItem.id,open: true, title: `编辑ID (${listItem.id}) 商品属性`,content: `更新商品(${listItem.name})属性，点击确认完成更新！`})}
+                      onClick={() => props.updateCommodityAlertDialog({id: listItem.id,open: true, title: `编辑ID (${listItem.id}) 商品属性`,content: `更新商品(${listItem.name})属性，点击确认完成更新！`, disabledConfirm: true})}
                     >
                       <ModeEdit className={classes.icon} style={{ color: THEMBG }}/>
                     </IconButton>
@@ -74,7 +74,7 @@ function CommodityList(props) {
                   <Tooltip id="tooltip-icon" title="删除" placement="right-start">
                     <IconButton
                       aria-label="Delete"
-                      onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`})}
+                      onClick={() => props.delectCommodityAlertDialog({id: listItem.id,open: true, title: `删除ID (${listItem.id}) 商品`,content: `确认删除商品(${listItem.name})吗？`, disabledConfirm: false})}
                     >
                       <DeleteIcon className={classes.icon} style={{ color: delectIcon }}/>
                     </IconButton>
