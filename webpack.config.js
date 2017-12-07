@@ -81,7 +81,7 @@ const publicConfig = {
   从而删除或添加一些重要代码。我们可以使用 webpack 内置的 DefinePlugin 为所有的依赖定义这个变量：*/
   plugins:[
      new CleanWebpackPlugin(['dist'],{
-       "exclude": ['api']      //里边东西不清楚
+       "exclude": ['api']      //里边东西不删除
      }),
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
