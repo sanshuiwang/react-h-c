@@ -1,3 +1,28 @@
 {
-  "commodityList": []
+  "commodityList": [
+    {
+      "id": 1512723872610,
+      "name": "香菇",
+      "num": "333",
+      "house": "23",
+      "price": "4",
+      "supplier": "上海香菇11111"
+    },
+    {
+      "id": 1512724056458,
+      "name": "三明治",
+      "num": "33",
+      "house": "55555",
+      "price": "1",
+      "supplier": "上海三明治邮箱公司"
+    },
+    {
+      "id": 1512725076937,
+      "name": "三水",
+      "num": "1",
+      "house": "1",
+      "price": "1",
+      "supplier": "上海水务"
+    }
+  ]
 }

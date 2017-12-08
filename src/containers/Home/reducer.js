@@ -23,7 +23,8 @@ import {
   SEARCH_INPUT_TEXT_CHANG,
   SEARCH_COMMODITY_INFO_REQUEST,
   SEARCH_COMMODITY_INFO_SUCCESS,
-  SEARCH_COMMODITY_INFO_FAIL
+  SEARCH_COMMODITY_INFO_FAIL,
+  SEARCH_COMMODITY_LIST_ARR_CHANGE
 } from './action';
 
 /*删除商品的弹层数据*/
@@ -216,6 +217,11 @@ export default function reducer(state=initState,action){
       return {
         ...state,
       };
+    case SEARCH_COMMODITY_LIST_ARR_CHANGE:
+    return {
+      ...state,
+      searchCommodityListArr: action.searchCommodityListArr
+    };
     default:
       return state;
   }

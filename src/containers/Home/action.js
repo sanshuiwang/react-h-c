@@ -38,6 +38,8 @@ export const SEARCH_COMMODITY_INFO_REQUEST = "home/SEARCH_COMMODITY_INFO_REQUEST
 export const SEARCH_COMMODITY_INFO_SUCCESS = "home/SEARCH_COMMODITY_INFO_SUCCESS";
 export const SEARCH_COMMODITY_INFO_FAIL = "home/SEARCH_COMMODITY_INFO_FAIL";
 
+export const SEARCH_COMMODITY_LIST_ARR_CHANGE = "home/SEARCH_COMMODITY_LIST_ARR_CHANGE";
+
 export function getCommodityList(){
   return {
     types: [GET_COMMODITY_INFO_REQUEST,GET_COMMODITY_INFO_SUCCESS,GET_COMMODITY_INFO_FAIL],
@@ -117,4 +119,8 @@ export function searchGoods(searchInputText){
     types: [SEARCH_COMMODITY_INFO_REQUEST,SEARCH_COMMODITY_INFO_SUCCESS,SEARCH_COMMODITY_INFO_FAIL],
     promise: client => client.get(`${PATH}/commodityList?name_like=${searchInputText}&_sort=id&_order=desc`)
   }
+}
+
+export function searchCommodityListArrChange(searchCommodityListArr){
+  return {type: SEARCH_COMMODITY_LIST_ARR_CHANGE,searchCommodityListArr: searchCommodityListArr}
 }

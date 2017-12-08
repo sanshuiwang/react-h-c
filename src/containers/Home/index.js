@@ -18,7 +18,8 @@ import {
   addSucSnackbarChange,
   updateAlertDialogChange,
   updateCommodityFormChange,
-  updateCommodityFormToDB
+  updateCommodityFormToDB,
+  searchCommodityListArrChange
 } from './action';
 
 import './styles.scss';
@@ -57,7 +58,20 @@ class Home extends Component {
 
   handleRequestUpdateConfirm = () => {
     let updateCommodityFormCopy = JSON.parse(JSON.stringify(this.props.updateCommodityForm));
-    this.props.updateCommodityFormToDB(updateCommodityFormCopy);
+    new Promise((resolve, reject)=>{
+      resolve(this.props.updateCommodityFormToDB(updateCommodityFormCopy));
+    }).then(() => {
+      if(this.props.searchCommodityListArr !== 0){
+        let searchCommodityListArrDeep = _.cloneDeepWith(this.props.searchCommodityListArr);
+        for(let i = 0; i < searchCommodityListArrDeep.length; i++){
+          if(searchCommodityListArrDeep[i].id === updateCommodityFormCopy.id){
+            searchCommodityListArrDeep.splice(i,1,updateCommodityFormCopy);
+            this.props.searchCommodityListArrChange(searchCommodityListArrDeep);
+            break;
+          }
+        }
+      }
+    }).catch((error) => console.log('handleRequestUpdateConfirm::'+error));
   }
 
   handleChangeFormUpdate = (item,event) => {
@@ -137,7 +151,8 @@ export default connect((state) => ({
   delAlertDialogData: state.commodity.delAlertDialog,
   addSucSnackbar: state.commodity.addSucSnackbar,
   updateAlertDialog: state.commodity.updateAlertDialog,
-  updateCommodityForm: state.commodity.updateCommodityForm
+  updateCommodityForm: state.commodity.updateCommodityForm,
+  searchCommodityListArr: state.commodity.searchCommodityListArr
 }),{
   getCommodityList,
   delectCommodityById,
@@ -145,5 +160,6 @@ export default connect((state) => ({
   addSucSnackbarChange,
   updateAlertDialogChange,
   updateCommodityFormChange,
-  updateCommodityFormToDB
+  updateCommodityFormToDB,
+  searchCommodityListArrChange
 })(Home);
