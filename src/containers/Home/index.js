@@ -7,8 +7,9 @@ import AlertDialog from '../../components/AlertDialog';
 import SnackbarMsg from '../../components/SnackbarMsg';
 
 import FormInput from './components/FormInput';
-import CommodityList from './commodityList';
+import CommodityList from './CommodityList';
 import CommodityAdd from './CommodityAdd';
+import CommoditySearch from './CommoditySearch';
 
 import {
   getCommodityList,
@@ -90,7 +91,7 @@ class Home extends Component {
     const commodityNodes = [
       <CommodityList commodityList={commodityListData} />,
       <CommodityAdd />,
-      'sousuo !!!'
+      <CommoditySearch />
     ];
     return (
       <div>

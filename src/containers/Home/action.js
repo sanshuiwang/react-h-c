@@ -32,6 +32,12 @@ export const UPDATE_COMMODITY_INFO_REQUEST = "home/UPDATE_COMMODITY_INFO_REQUEST
 export const UPDATE_COMMODITY_INFO_SUCCESS = "home/UPDATE_COMMODITY_INFO_SUCCESS";
 export const UPDATE_COMMODITY_INFO_FAIL = "home/UPDATE_COMMODITY_INFO_FAIL";
 
+export const SEARCH_INPUT_TEXT_CHANG = "home/SEARCH_INPUT_TEXT_CHANG";
+
+export const SEARCH_COMMODITY_INFO_REQUEST = "home/SEARCH_COMMODITY_INFO_REQUEST";
+export const SEARCH_COMMODITY_INFO_SUCCESS = "home/SEARCH_COMMODITY_INFO_SUCCESS";
+export const SEARCH_COMMODITY_INFO_FAIL = "home/SEARCH_COMMODITY_INFO_FAIL";
+
 export function getCommodityList(){
   return {
     types: [GET_COMMODITY_INFO_REQUEST,GET_COMMODITY_INFO_SUCCESS,GET_COMMODITY_INFO_FAIL],
@@ -99,5 +105,16 @@ export function updateCommodityFormToDB(updateCommodityForm){
   return {
     types: [UPDATE_COMMODITY_INFO_REQUEST,UPDATE_COMMODITY_INFO_SUCCESS,UPDATE_COMMODITY_INFO_FAIL],
     promise: client => client.put(`${PATH}/commodityList/${updateCommodityForm.id}`,updateCommodityForm)
+  }
+}
+
+export function searchInputTextChange(searchInputText){
+  return {type: SEARCH_INPUT_TEXT_CHANG,searchInputText: searchInputText}
+}
+
+export function searchGoods(searchInputText){
+  return {
+    types: [SEARCH_COMMODITY_INFO_REQUEST,SEARCH_COMMODITY_INFO_SUCCESS,SEARCH_COMMODITY_INFO_FAIL],
+    promise: client => client.get(`${PATH}/commodityList?name_like=${searchInputText}&_sort=id&_order=desc`)
   }
 }

@@ -19,7 +19,11 @@ import {
   UPDATE_COMMODITY_FORM,
   UPDATE_COMMODITY_INFO_REQUEST,
   UPDATE_COMMODITY_INFO_SUCCESS,
-  UPDATE_COMMODITY_INFO_FAIL
+  UPDATE_COMMODITY_INFO_FAIL,
+  SEARCH_INPUT_TEXT_CHANG,
+  SEARCH_COMMODITY_INFO_REQUEST,
+  SEARCH_COMMODITY_INFO_SUCCESS,
+  SEARCH_COMMODITY_INFO_FAIL
 } from './action';
 
 /*删除商品的弹层数据*/
@@ -58,7 +62,9 @@ const initState = {
   addCommodityConfirm: true,
   addSucSnackbar: initSnackbar,
   updateAlertDialog: initAlertDialog,
-  updateCommodityForm: initCommodityForm
+  updateCommodityForm: initCommodityForm,
+  searchInputText: '',
+  searchCommodityListArr: []
 };
 
 /*这里的...state语法，是和别人的Object.assign()起同一个作用，合并新旧state。我们这里是没效果的，但是我建议都写上这个哦*/
@@ -189,6 +195,26 @@ export default function reducer(state=initState,action){
     case UPDATE_COMMODITY_INFO_FAIL:
       return {
         ...state
+      };
+    case SEARCH_INPUT_TEXT_CHANG:
+      return {
+        ...state,
+        searchInputText: action.searchInputText
+      };
+    case SEARCH_COMMODITY_INFO_REQUEST:
+      return {
+        ...state,
+      };
+    case SEARCH_COMMODITY_INFO_SUCCESS:
+    console.log(2000,action);
+      return {
+        ...state,
+        searchCommodityListArr: action.result.data
+      };
+    case SEARCH_COMMODITY_INFO_FAIL:
+    console.log(3000,action);
+      return {
+        ...state,
       };
     default:
       return state;
