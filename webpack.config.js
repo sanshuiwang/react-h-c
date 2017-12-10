@@ -21,18 +21,14 @@ devtool的值改成cheap-module-source-map
 0.提取公共部分，提高访问速度{第3条优化公共文件}
 1.使用UglifyJSPlugin来压缩生成的文件
 2.process.env.NODE_ENV 环境变量关联
-3.HashedModuleIdsPlugin使公共部分文件名不变{即使更改了别的代码文件,那么vendor.xxx.js不变},更改vender数组内容才会变{控制成不改内容不换chunkhash}
+3.类似缓存：：HashedModuleIdsPlugin使公共部分文件名不变{即使更改了别的代码文件,那么vendor.xxx.js不变},更改vender数组内容才会变{控制成不改内容不换chunkhash}
 4.CleanWebpackPlugin打包优化，清理干净生产的目录
-<<<<<<< HEAD
 5.提取css,并将css生成单独文件{extract-text-webpack-plugin}
-=======
-5.提取css,并将css生成单独文件extract-text-webpack-plugin
->>>>>>> b1c661a234b72a29815f3f87e44abc37b6f0722c
 6.babel-plugin-transform-runtime将辅助函数“搬”到一个单独的模块babel-runtime中，这样做能减小项目文件的大小。
 {原因：babel 默认会将这些辅助函数内联到每一个 js 文件里，这样文件多的时候，项目就会很大。}
 */
 const publicConfig = {
-  /*错误信息是不是提示的很详细,我们在srouce里面能看到我们写的代码，也能打断点调试哦~*/
+  /*错误信息是不是提示的很详细,我们在source里面能看到我们写的代码，也能打断点调试哦~*/
   devtool: 'cheap-module-source-map',
 
   /*src文件夹下面的以.js结尾的文件，要使用babel解析*/
@@ -71,8 +67,7 @@ const publicConfig = {
   //   }
   // },
 
-  /*不刷新页面只更换更改的地方HotModuleReplacementPlugin()*/
-  /*name: 'vendor'把react等库生成打包到公共vendor.hash.js里面去;使名字永久不变，一直缓存在用户本地的。
+  /*缓存：：name: 'vendor'把react等库生成打包到公共vendor.hash.js里面去;使名字永久不变，一直缓存在用户本地的。
   webpack.HashedModuleIdsPlugin然而在Home.js，随便改变个字，你发现home.xxx.js名字变化的同时，vendor.xxx.js名字也变了。切记配name: 'runtime'*/
   /*UglifyJSPlugin来压缩生成的文件*/
   /*许多 library 将通过与 process.env.NODE_ENV 环境变量关联，以决定 library 中应该引用哪些内容。
