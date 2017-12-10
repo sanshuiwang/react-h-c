@@ -68,7 +68,9 @@ const publicConfig = {
   // },
 
   /*缓存：：name: 'vendor'把react等库生成打包到公共vendor.hash.js里面去;使名字永久不变，一直缓存在用户本地的。
-  webpack.HashedModuleIdsPlugin然而在Home.js，随便改变个字，你发现home.xxx.js名字变化的同时，vendor.xxx.js名字也变了。切记配name: 'runtime'*/
+  webpack的缓存机制：：
+  webpack.HashedModuleIdsPlugin然而在Home.js，随便改变个字，你发现home.xxx.js名字变化的同时，vendor.xxx.js名字也变了。
+  切记在中【webpack.optimize.CommonsChunkPlugin】配name: 'runtime'*/
   /*UglifyJSPlugin来压缩生成的文件*/
   /*许多 library 将通过与 process.env.NODE_ENV 环境变量关联，以决定 library 中应该引用哪些内容。
   例如，当不处于生产环境中时，某些 library 为了使调试变得容易，可能会添加额外的日志记录(log)和测试(test)。

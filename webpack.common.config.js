@@ -82,6 +82,7 @@ const commonConfig = {
   //   }
   // },
   /*缓存：：name: 'vendor'把react等库生成打包到公共vendor.hash.js里面去;使名字永久不变，一直缓存在用户本地的。
+  webpack的缓存机制：：
   webpack.HashedModuleIdsPlugin然而在Home.js，随便改变个字，你发现home.xxx.js名字变化的同时，vendor.xxx.js名字也变了。
   切记在中【webpack.optimize.CommonsChunkPlugin】配name: 'runtime'*/
   plugins: [
