@@ -41,7 +41,19 @@ class Home extends Component {
 
   handleRequestDelConfirm = () => {
     let id = this.props.delAlertDialogData.id;
-    this.props.delectCommodityById(id);
+
+    new Promise((resolve, reject) =>{
+      resolve(this.props.delectCommodityById(id));
+    }).then(()=>{
+        let searchCommodityListArrDeep = _.cloneDeepWith(this.props.searchCommodityListArr);
+        for(let i = 0; i < searchCommodityListArrDeep.length ; i++){
+          if(searchCommodityListArrDeep[i].id === id){
+            searchCommodityListArrDeep.splice(i,1);
+            this.props.searchCommodityListArrChange(searchCommodityListArrDeep);
+            break;
+          }
+        }
+    });
   }
 
   handleRequestCloseSnackbarAddSuc = () => {

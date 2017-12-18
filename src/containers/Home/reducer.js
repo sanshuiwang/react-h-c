@@ -218,10 +218,10 @@ export default function reducer(state=initState,action){
         ...state,
       };
     case SEARCH_COMMODITY_LIST_ARR_CHANGE:
-    return {
-      ...state,
-      searchCommodityListArr: action.searchCommodityListArr
-    };
+      return {
+        ...state,
+        searchCommodityListArr: action.searchCommodityListArr
+      };
     default:
       return state;
   }

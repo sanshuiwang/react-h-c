@@ -1,12 +1,3 @@
 {
-  "commodityList": [
-    {
-      "id": 1512723872610,
-      "name": "香菇",
-      "num": "333",
-      "house": "23",
-      "price": "4",
-      "supplier": "上海香菇有限公司"
-    }
-  ]
+  "commodityList": []
 }
