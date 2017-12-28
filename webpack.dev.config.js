@@ -80,7 +80,7 @@ const devConfig = {
 
 //b是开发的devConfig
 //a是导进来的commonConfig通用的配置
-//都是合并，具有的不变，没有的属性引进来
+//都是合并，具有的不变，没有的属性合并进来
 module.exports = merge({
   customizeArray(a,b,key) {
     /*entry.app不合并，全替换*/

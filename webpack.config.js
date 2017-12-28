@@ -103,5 +103,5 @@ const publicConfig = {
     ScssExtract
   ]
 }
-
+//合并配置，对publicConfig具有的配置项目属性保持不变，不具备的拿进来使用。
 module.exports = merge(commonConfig, publicConfig);
