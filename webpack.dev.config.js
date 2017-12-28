@@ -29,6 +29,28 @@ const devConfig = {
   module: {
     rules: [
       {
+        test: /\.(js|jsx)$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            "plugins": [
+              ["react-transform", {
+                "transforms": [{
+                  "transform": "react-transform-hmr",
+                  "imports": ["react"],
+                  "locals": ["module"]
+                }, {
+                  "transform": "react-transform-catch-errors",
+                  "imports": ["react", "redbox-react"]
+                }]
+              }]
+            ]
+          }
+        }],
+        include: path.join(__dirname, 'src')
+      },
+      {
         test: /\.css$/,
         use: ['style-loader','css-loader','postcss-loader']
       },
@@ -47,7 +69,8 @@ const devConfig = {
     contentBase: path.join(__dirname, 'dist'),
     host: '0.0.0.0',
     historyApiFallback: true,
-    hot: true
+    hot: true,  //HotModuleReplacementPlugin依赖
+    port: 8686
   },
   /*不刷新页面只更换更改的地方HotModuleReplacementPlugin()*/
   plugins:[
@@ -55,6 +78,9 @@ const devConfig = {
   ]
 }
 
+//b是开发的devConfig
+//a是导进来的commonConfig通用的配置
+//都是合并，具有的不变，没有的属性引进来
 module.exports = merge({
   customizeArray(a,b,key) {
     /*entry.app不合并，全替换*/

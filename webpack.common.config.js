@@ -2,27 +2,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+var pkg = require('./package.json');
+
 const commonConfig = {
   entry: {
     app: [
       "babel-polyfill",
       path.join(__dirname, 'src/index.js')
     ],
-    vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+    //将 第三方依赖（node_modules中的） 单独打包
+    //vendor: ['react', 'react-router-dom', 'redux', 'react-dom', 'react-redux']
+    vendor: Object.keys(pkg.dependencies)
   },
   output: {
     path: path.join(__dirname, './dist'),
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'pagesjs/[name].[chunkhash].js',
+    filename: 'js/[name].[chunkhash].js',  //打包所用，开发有单独filename定义替换和并没有的
+    chunkFilename: 'demandJS/[name].[chunkhash].js',    //按需加载
     publicPath: "/"
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
-        use: ['babel-loader?cacheDirectory=true'],
-        include: path.join(__dirname, 'src')
-      }, {
         test: /\.(jpe?g|png|gif|svg)$/i,
         use: [
           {
@@ -56,20 +56,6 @@ const commonConfig = {
             }
           }
         ]
-      },{
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [{
-          loader: 'url-loader',
-          options: {
-            limit: 10000,
-            minetype: "application/font-woff"
-          }
-        }]
-      },{
-        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        use: [{
-          loader: 'file-loader'
-        }]
       }
     ]
   },
@@ -91,8 +77,14 @@ const commonConfig = {
       template: path.join(__dirname, 'src/index.html')
     }),
     new webpack.HashedModuleIdsPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({name: 'vendor'}),
-    new webpack.optimize.CommonsChunkPlugin({name: 'runtime'})
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: 'dependenciesJS/[name].[hash].js'
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'runtime',
+      filename: 'dependenciesJS/[name].[hash].js'
+    })
   ]
 }
 

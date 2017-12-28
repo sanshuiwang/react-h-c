@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//分离css
 const ScssExtract =  new ExtractTextPlugin({
        filename: 'css/[name]-scss.[contenthash:5].css',
        allChunks: true
@@ -37,6 +38,16 @@ const publicConfig = {
    *style-loader将所有的计算后的样式加入页面中；二者组合在一起使你能够把样式表嵌入webpack打包后的JS文件中*/
   module: {
     rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true
+          }
+        }],
+        include: path.join(__dirname, 'src')
+      },
       {
         test: /\.css$/,
         use: CssExtract.extract({
@@ -77,14 +88,16 @@ const publicConfig = {
   其实，当使用 process.env.NODE_ENV === 'production' 时，一些 library 可能针对具体用户的环境进行代码优化，
   从而删除或添加一些重要代码。我们可以使用 webpack 内置的 DefinePlugin 为所有的依赖定义这个变量：*/
   plugins:[
-     new CleanWebpackPlugin(['dist'],{
-       "exclude": ['api']      //里边东西不删除
-     }),
+    // webpack 内置的 banner-plugin
+    new webpack.BannerPlugin("Copyright by wechat:Yuhuo0909."),
+    new CleanWebpackPlugin(['dist'],{
+      "exclude": ['api']      //里边东西不删除
+    }),
     new UglifyJSPlugin(),
     new webpack.DefinePlugin({
-        'process.env': {
-            'NODE_ENV': JSON.stringify('production')
-         }
+      'process.env': {
+          'NODE_ENV': JSON.stringify('production')
+       }
     }),
     CssExtract,
     ScssExtract
