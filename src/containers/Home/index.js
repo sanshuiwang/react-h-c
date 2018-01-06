@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Helmet} from "react-helmet";
 
 import ScrollableTabsButtonAuto from '../../components/ScrollableTabsButtonAuto';
 import AlertDialog from '../../components/AlertDialog';
@@ -121,6 +122,9 @@ class Home extends Component {
     ];
     return (
       <div>
+        <Helmet>
+            <title>商品管理</title>
+        </Helmet>
         <ScrollableTabsButtonAuto
           tabsItems={commodityTabs}
           itemNodes={commodityNodes}
