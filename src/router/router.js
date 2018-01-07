@@ -5,6 +5,7 @@ import {BrowserRouter as Router,Route,Switch,Link} from 'react-router-dom';
 import Bundle from './Bundle';
 
 import Login from 'bundle-loader?lazy&name=login!../containers/Login';
+import LoginDemo from 'bundle-loader?lazy&name=login!../containers/LoginDemo';
 import Home from 'bundle-loader?lazy&name=home!../containers/Home';
 import Page1 from 'bundle-loader?lazy&name=page1!../containers/Page1';
 import Counter from 'bundle-loader?lazy&name=counter!../containers/Counter';
@@ -24,6 +25,7 @@ const createComponent = (component) => () => (
 const getRouter = () => (
       <Switch>
         <Route exact path="/" component={createComponent(Login)}/>
+        <Route exact path="/loginDemo" component={createComponent(LoginDemo)}/>
         <Route exact path="/home" component={createComponent(Home)}/>
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>

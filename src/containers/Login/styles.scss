@@ -1,0 +1,19 @@
+$THEMBG: #00BCD4; //主题色
+$THEMBGMAT: #B2EBF2; //衬托色
+.input-focused:after {
+  background-color: $THEMBG;
+}
+
+.confirm-button:hover {
+  background-color: $THEMBGMAT;
+  color: $THEMBG;
+}
+
+.form-helper-text{
+  display: none;
+}
+
+.search-input-wrapper{
+  width: 380px;
+  margin: 0 auto;
+}

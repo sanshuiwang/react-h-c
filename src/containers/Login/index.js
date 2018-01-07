@@ -8,6 +8,10 @@ import { FormControl, FormHelperText } from 'material-ui/Form';
 import Visibility from 'material-ui-icons/Visibility';
 import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import PermIdentity from 'material-ui-icons/PermIdentity';
+import Button from 'material-ui/Button';
+import {THEMBG} from '../../util/materialColor';
+import c from 'classnames';
+import './styles.scss';
 const styles = theme => ({
   formWrapper:{
     width: '260px',
@@ -22,6 +26,15 @@ const styles = theme => ({
   },
   inputIcon: {
     margin: theme.spacing.unit,
+  },
+  button: {
+    margin: theme.spacing.unit,
+  },
+  raised: {
+    width: '244px',
+    color: '#FFF',
+    boxShadow: `0px 1px 5px 0px ${THEMBG}, 0px 2px 2px 0px ${THEMBG}, 0px 3px 1px -2px ${THEMBG}`,
+    backgroundColor: THEMBG
   }
 });
 
@@ -64,7 +77,7 @@ class Login extends Component {
              fullWidth
              endAdornment={
                <InputAdornment position="end">
-                    <PermIdentity style={{width:'48px'}}/>
+                  <PermIdentity style={{width:'48px'}}/>
                </InputAdornment>
              }
            />
@@ -89,6 +102,15 @@ class Login extends Component {
              }
            />
           </FormControl>
+          <Button
+            raised
+            className={c(classes.button,'confirm-button')}
+            classes={{
+              raised: classes.raised
+            }}
+          >
+           Default
+          </Button>
         </div>
      </div>);
   }
