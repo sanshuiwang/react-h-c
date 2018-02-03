@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Helmet} from "react-helmet";
+import {connect} from 'react-redux';
+
+import c from 'classnames';
+
+import {changeShowPassword} from './action';
+
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
@@ -10,8 +16,9 @@ import VisibilityOff from 'material-ui-icons/VisibilityOff';
 import PermIdentity from 'material-ui-icons/PermIdentity';
 import Button from 'material-ui/Button';
 import {THEMBG} from '../../util/materialColor';
-import c from 'classnames';
+
 import './styles.scss';
+
 const styles = theme => ({
   formWrapper:{
     width: '260px',
@@ -43,25 +50,27 @@ class Login extends Component {
    super(props);
    this.state = {
      amount: '',
-     password: '',
-     weight: '',
-     showPassword: false,
-   };
+     password: ''
+   }
   }
 
-  handleChange = prop => event => {
-     this.setState({ [prop]: event.target.value });
-  };
-
-   handleMouseDownPassword = event => {
+  handleMouseDownPassword = event => {
     event.preventDefault();
   };
 
   handleClickShowPasssword = () => {
-    this.setState({ showPassword: !this.state.showPassword });
+    let showPassword = this.props.showPassword;
+    this.props.changeShowPassword(!showPassword);
   };
+
+  handleChangeInput = (prop,event) => {
+    this.setState({[prop]: event.target.value});
+  }
+  handleSubmitLogin = (event) => {
+    console.log(1000,this.state);
+  }
   render() {
-    const { classes } = this.props;
+    const { classes,showPassword } = this.props;
     return (<div>
         <Helmet>
           <title>登录</title>
@@ -73,8 +82,8 @@ class Login extends Component {
              id="amount-user"
              type="text"
              value={this.state.amount}
-             onChange={this.handleChange('amount')}
              fullWidth
+             onChange={(event) => this.handleChangeInput('amount',event)}
              endAdornment={
                <InputAdornment position="end">
                   <PermIdentity style={{width:'48px'}}/>
@@ -86,17 +95,17 @@ class Login extends Component {
            <InputLabel htmlFor="amount-password">密码</InputLabel>
            <Input
              id="amount-password"
-             type={this.state.showPassword ? 'text' : 'password'}
+             type={showPassword ? 'text' : 'password'}
              value={this.state.password}
+             onChange={(event) => this.handleChangeInput('password',event)}
              fullWidth
-             onChange={this.handleChange('password')}
              endAdornment={
                <InputAdornment position="end">
                  <IconButton
                    onClick={this.handleClickShowPasssword}
                    onMouseDown={this.handleMouseDownPassword}
                  >
-                   {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                   {showPassword ? <VisibilityOff /> : <Visibility />}
                  </IconButton>
                </InputAdornment>
              }
@@ -108,14 +117,22 @@ class Login extends Component {
             classes={{
               raised: classes.raised
             }}
+            onClick={(event) => this.handleSubmitLogin(event)}
           >
-           Default
+           LOGIN
           </Button>
         </div>
      </div>);
   }
 }
+
 Login.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-export default withStyles(styles)(Login);
+
+export default withStyles(styles)(connect((state) => ({
+  loginAmount: state.login.loginAmount,
+  showPassword: state.login.showPassword
+}),{
+  changeShowPassword
+})(Login));

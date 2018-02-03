@@ -2,7 +2,7 @@ import {combineReducers} from "redux";
 import counter from '../containers/Counter/reducer';
 import userInfo from '../containers/UserInfo/reducer';
 import commodity from '../containers/Home/reducer';
-
+import login from '../containers/Login/reducer';
 /*调用store.dispatch(action)提交action。
 *redux store调用传入的reducer函数。把当前的state和action传进去。
 *根 reducer 应该把多个子 reducer 输出合并成一个单一的 state 树。
@@ -17,5 +17,6 @@ import commodity from '../containers/Home/reducer';
 export default combineReducers({
   counter,
   userInfo,
-  commodity
+  commodity,
+  login
 });
