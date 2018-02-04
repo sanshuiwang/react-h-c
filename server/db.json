@@ -1,12 +1,3 @@
 {
-  "commodityList": [
-    {
-      "id": 1514430333577,
-      "name": "w",
-      "num": "2",
-      "house": "3",
-      "price": "43",
-      "supplier": "1"
-    }
-  ]
+  "commodityList": []
 }

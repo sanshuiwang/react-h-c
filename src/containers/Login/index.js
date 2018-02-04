@@ -5,7 +5,10 @@ import {connect} from 'react-redux';
 
 import c from 'classnames';
 
-import {changeShowPassword} from './action';
+import {
+  changeShowPassword,
+  loginSetAmount
+} from './action';
 
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
@@ -18,6 +21,8 @@ import Button from 'material-ui/Button';
 import {THEMBG} from '../../util/materialColor';
 
 import './styles.scss';
+
+import history from '../../router/history/history';
 
 const styles = theme => ({
   formWrapper:{
@@ -56,18 +61,25 @@ class Login extends Component {
 
   handleMouseDownPassword = event => {
     event.preventDefault();
-  };
+  }
 
   handleClickShowPasssword = () => {
     let showPassword = this.props.showPassword;
     this.props.changeShowPassword(!showPassword);
-  };
+  }
 
   handleChangeInput = (prop,event) => {
     this.setState({[prop]: event.target.value});
   }
+
   handleSubmitLogin = (event) => {
-    console.log(1000,this.state);
+    this.props.loginSetAmount({amount: 'sanshuiwang', token: 'sanshuiwang-123'})
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    if(nextProps.loginAmount !== this.props.loginAmount && nextProps.loginAmount.token){
+      history.push('/home');
+    }
   }
   render() {
     const { classes,showPassword } = this.props;
@@ -134,5 +146,6 @@ export default withStyles(styles)(connect((state) => ({
   loginAmount: state.login.loginAmount,
   showPassword: state.login.showPassword
 }),{
-  changeShowPassword
+  changeShowPassword,
+  loginSetAmount
 })(Login));

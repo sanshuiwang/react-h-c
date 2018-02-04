@@ -30,7 +30,7 @@ class AlertDialog extends React.Component {
       <div>
         <Dialog
           open={alertDialogData.open}
-          onRequestClose={handleRequestCloseDialog}
+          onClose={handleRequestCloseDialog}
           transition={Transition}
           >
             <DialogTitle>{alertDialogData.title}</DialogTitle>

@@ -44,7 +44,7 @@ class SnackbarMsg extends React.Component {
         <Snackbar
           key={SnackbarData.key}
           open={SnackbarData.open}
-          onRequestClose={handleRequestCloseSnackbar}
+          onClose={handleRequestCloseSnackbar}
           transition={transitionFunc}
           SnackbarContentProps={{
             'aria-describedby': SnackbarData.messageId,

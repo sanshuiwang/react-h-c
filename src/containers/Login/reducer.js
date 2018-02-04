@@ -1,5 +1,6 @@
 import {
-  CHANGE_SHOW_PASSWORD
+  CHANGE_SHOW_PASSWORD,
+  LOGIN_SET_AMOUNT
 } from './action';
 
 const initLoginAmount ={
@@ -20,6 +21,11 @@ export default function reducer(state=initState,action){
       return {
         ...state,
         showPassword: action.showPassword
+      };
+    case LOGIN_SET_AMOUNT:
+      return {
+        ...state,
+        loginAmount: action.loginAmount
       };
     default:
       return state;
