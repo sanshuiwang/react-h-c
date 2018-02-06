@@ -12,6 +12,8 @@ import Counter from 'bundle-loader?lazy&name=counter!../containers/Counter';
 import UserInfo from 'bundle-loader?lazy&name=userInfo222!../containers/UserInfo';
 import NotFound from 'bundle-loader?lazy&name=notFound!../containers/NotFound';
 
+import SurveyDemo from 'bundle-loader?lazy&name=surveyDemo!../containers/SurveyDemo';
+
 import Loading from '../components/Loading';
 
 const createComponent = (component) => () => (
@@ -30,6 +32,7 @@ const getRouter = () => (
         <Route path="/page1" component={createComponent(Page1)}/>
         <Route path="/counter" component={createComponent(Counter)}/>
         <Route path="/userInfo" component={createComponent(UserInfo)}/>
+        <Route path="/surveyDemo" component={createComponent(SurveyDemo)}/>
         <Route component={createComponent(NotFound)}/>
       </Switch>
 );
