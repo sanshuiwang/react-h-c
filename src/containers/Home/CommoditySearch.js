@@ -12,7 +12,7 @@ import { withStyles } from 'material-ui/styles';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import IconButton from 'material-ui/IconButton';
 import { FormControl, FormHelperText } from 'material-ui/Form';
-import SearchIcon from 'material-ui-icons/Search';
+import SearchIcon from '@material-ui/icons/Search';
 
 import Icon from 'material-ui/Icon';
 

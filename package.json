@@ -44,13 +44,13 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
     "axios": "^0.17.0",
     "lodash": "^4.17.4",
-    "material-ui": "^1.0.0-beta.26",
-    "material-ui-icons": "^1.0.0-beta.17",
-    "react": "^16.0.0",
+    "material-ui": "^1.0.0-beta.41",
+    "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
-    "react-dom": "^16.0.0",
+    "react-dom": "^16.3.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",

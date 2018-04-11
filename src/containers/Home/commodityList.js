@@ -13,8 +13,8 @@ import IconButton from 'material-ui/IconButton';
 import Button from 'material-ui/Button';
 import Tooltip from 'material-ui/Tooltip';
 
-import DeleteIcon from 'material-ui-icons/Delete';
-import ModeEdit from 'material-ui-icons/ModeEdit';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ModeEdit from '@material-ui/icons/ModeEdit';
 const styles = theme => ({
   root: {
     width: '100%',

@@ -14,9 +14,9 @@ import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
 import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
 import { FormControl, FormHelperText } from 'material-ui/Form';
-import Visibility from 'material-ui-icons/Visibility';
-import VisibilityOff from 'material-ui-icons/VisibilityOff';
-import PermIdentity from 'material-ui-icons/PermIdentity';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import PermIdentity from '@material-ui/icons/PermIdentity';
 import Button from 'material-ui/Button';
 import {THEMBG} from '../../util/materialColor';
 
@@ -124,7 +124,7 @@ class Login extends Component {
            />
           </FormControl>
           <Button
-            raised
+            variant='raised'
             className={c(classes.button,'confirm-button')}
             classes={{
               raised: classes.raised

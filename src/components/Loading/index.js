@@ -11,10 +11,10 @@ const styles = {
     width: '100%',
     zIndex: '999'
   },
-  primaryColor: {
+  colorPrimary: {
     backgroundColor: THEMBGMAT
   },
-  primaryColorBar: {
+  barColorPrimary: {
     backgroundColor: THEMBG
   }
 };
@@ -25,8 +25,8 @@ class Loading extends Component {
         return (
             <div className={classes.root}>
               <LinearProgress classes={{
-                  primaryColor: classes.primaryColor,
-                  primaryColorBar: classes.primaryColorBar
+                  colorPrimary: classes.colorPrimary,
+                  barColorPrimary: classes.barColorPrimary
                 }}
               />
             </div>

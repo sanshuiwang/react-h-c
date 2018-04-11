@@ -84,7 +84,7 @@ class CommodityAdd extends Component {
           />
           <Button
             disabled = {addCommodityConfirm}
-            raised
+            variant='raised'
             classes={{
               raised: classes.raised
             }}
